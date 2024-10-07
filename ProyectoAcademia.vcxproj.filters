@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Archivos de origen">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Archivos de encabezado">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Archivos de recursos">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Archivos de origen\Listas">
+      <UniqueIdentifier>{84ec4c31-4398-499b-8bde-fdc796ef4402}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Nodos">
+      <UniqueIdentifier>{8adc67ce-0ec6-4911-a90e-a21480dd5001}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Clases">
+      <UniqueIdentifier>{e62fbcf4-d969-4759-9db0-3fd38279f2c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Academia/Interfaz">
+      <UniqueIdentifier>{15034e40-9da9-4c47-9296-911936989d4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Archivos">
+      <UniqueIdentifier>{67b796da-6cba-42e2-9a0e-5fc12b756aaf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Listas">
+      <UniqueIdentifier>{9e6e669d-0df6-41bb-8278-c9520ad74a66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Nodos">
+      <UniqueIdentifier>{6605c458-a5de-4474-9baf-5a5f65d3c35c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Clases">
+      <UniqueIdentifier>{fb00d4db-4241-4aa7-88be-d5994e28d5dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Academia/Interfaz">
+      <UniqueIdentifier>{eba4cccd-e78a-499f-8133-bf9fc2d49a60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Archivos">
+      <UniqueIdentifier>{9169241b-f892-4d97-8b3d-582d7da83bc0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Archivos de recursos</Filter>
+    </ClCompile>
+    <ClCompile Include="academia.cpp">
+      <Filter>Archivos de origen\Academia/Interfaz</Filter>
+    </ClCompile>
+    <ClCompile Include="interfaz.cpp">
+      <Filter>Archivos de origen\Academia/Interfaz</Filter>
+    </ClCompile>
+    <ClCompile Include="archivo.cpp">
+      <Filter>Archivos de origen\Archivos</Filter>
+    </ClCompile>
+    <ClCompile Include="curso.cpp">
+      <Filter>Archivos de origen\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="descuento.cpp">
+      <Filter>Archivos de origen\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="estudiante.cpp">
+      <Filter>Archivos de origen\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="factura.cpp">
+      <Filter>Archivos de origen\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="grupo.cpp">
+      <Filter>Archivos de origen\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="horario.cpp">
+      <Filter>Archivos de origen\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="listaCurso.cpp">
+      <Filter>Archivos de origen\Listas</Filter>
+    </ClCompile>
+    <ClCompile Include="listaEstudiante.cpp">
+      <Filter>Archivos de origen\Listas</Filter>
+    </ClCompile>
+    <ClCompile Include="listaFactura.cpp">
+      <Filter>Archivos de origen\Listas</Filter>
+    </ClCompile>
+    <ClCompile Include="listaGrupo.cpp">
+      <Filter>Archivos de origen\Listas</Filter>
+    </ClCompile>
+    <ClCompile Include="listaPeriodo.cpp">
+      <Filter>Archivos de origen\Listas</Filter>
+    </ClCompile>
+    <ClCompile Include="listaProfesor.cpp">
+      <Filter>Archivos de origen\Listas</Filter>
+    </ClCompile>
+    <ClCompile Include="nodoCurso.cpp">
+      <Filter>Archivos de origen\Nodos</Filter>
+    </ClCompile>
+    <ClCompile Include="nodoEstudiante.cpp">
+      <Filter>Archivos de origen\Nodos</Filter>
+    </ClCompile>
+    <ClCompile Include="nodoFactura.cpp">
+      <Filter>Archivos de origen\Nodos</Filter>
+    </ClCompile>
+    <ClCompile Include="nodoGrupo.cpp">
+      <Filter>Archivos de origen\Nodos</Filter>
+    </ClCompile>
+    <ClCompile Include="nodoPeriodo.cpp">
+      <Filter>Archivos de origen\Nodos</Filter>
+    </ClCompile>
+    <ClCompile Include="nodoProfesor.cpp">
+      <Filter>Archivos de origen\Nodos</Filter>
+    </ClCompile>
+    <ClCompile Include="periodo.cpp">
+      <Filter>Archivos de origen\Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="profesor.cpp">
+      <Filter>Archivos de origen\Clases</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="academia.h">
+      <Filter>Archivos de encabezado\Academia/Interfaz</Filter>
+    </ClInclude>
+    <ClInclude Include="curso.h">
+      <Filter>Archivos de encabezado\Clases</Filter>
+    </ClInclude>
+    <ClInclude Include="archivo.h">
+      <Filter>Archivos de encabezado\Archivos</Filter>
+    </ClInclude>
+    <ClInclude Include="descuento.h">
+      <Filter>Archivos de encabezado\Clases</Filter>
+    </ClInclude>
+    <ClInclude Include="estudiante.h">
+      <Filter>Archivos de encabezado\Clases</Filter>
+    </ClInclude>
+    <ClInclude Include="factura.h">
+      <Filter>Archivos de encabezado\Clases</Filter>
+    </ClInclude>
+    <ClInclude Include="grupo.h">
+      <Filter>Archivos de encabezado\Clases</Filter>
+    </ClInclude>
+    <ClInclude Include="horario.h">
+      <Filter>Archivos de encabezado\Clases</Filter>
+    </ClInclude>
+    <ClInclude Include="interfaz.h">
+      <Filter>Archivos de encabezado\Academia/Interfaz</Filter>
+    </ClInclude>
+    <ClInclude Include="listaCurso.h">
+      <Filter>Archivos de encabezado\Listas</Filter>
+    </ClInclude>
+    <ClInclude Include="listaEstudiante.h">
+      <Filter>Archivos de encabezado\Listas</Filter>
+    </ClInclude>
+    <ClInclude Include="listaFactura.h">
+      <Filter>Archivos de encabezado\Listas</Filter>
+    </ClInclude>
+    <ClInclude Include="listaGrupo.h">
+      <Filter>Archivos de encabezado\Listas</Filter>
+    </ClInclude>
+    <ClInclude Include="listaPeriodo.h">
+      <Filter>Archivos de encabezado\Listas</Filter>
+    </ClInclude>
+    <ClInclude Include="listaProfesor.h">
+      <Filter>Archivos de encabezado\Listas</Filter>
+    </ClInclude>
+    <ClInclude Include="nodoCurso.h">
+      <Filter>Archivos de encabezado\Nodos</Filter>
+    </ClInclude>
+    <ClInclude Include="nodoEstudiante.h">
+      <Filter>Archivos de encabezado\Nodos</Filter>
+    </ClInclude>
+    <ClInclude Include="nodoFactura.h">
+      <Filter>Archivos de encabezado\Nodos</Filter>
+    </ClInclude>
+    <ClInclude Include="nodoGrupo.h">
+      <Filter>Archivos de encabezado\Nodos</Filter>
+    </ClInclude>
+    <ClInclude Include="nodoPeriodo.h">
+      <Filter>Archivos de encabezado\Nodos</Filter>
+    </ClInclude>
+    <ClInclude Include="nodoProfesor.h">
+      <Filter>Archivos de encabezado\Nodos</Filter>
+    </ClInclude>
+    <ClInclude Include="periodo.h">
+      <Filter>Archivos de encabezado\Clases</Filter>
+    </ClInclude>
+    <ClInclude Include="profesor.h">
+      <Filter>Archivos de encabezado\Clases</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
