@@ -19,4 +19,5 @@ public:
 	void setProfesor(profesor*);
 	void setSiguiente(nodoProfesor*);
 
+	string toString();
 };

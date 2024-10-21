@@ -13,10 +13,9 @@ public:
 	~listaEstudiante();
 	bool insertarPrimero(estudiante*);
 	bool insertarFinal(estudiante*);
-	string toString();
 	bool buscarPorId(string);
 	bool esVacia();
 	void eliminarEstudiante(string);
 	void vaciarLista();
-
+	string toString();
 };

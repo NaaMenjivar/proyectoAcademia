@@ -11,3 +11,6 @@ nodoProfesor* nodoProfesor::getSiguiente() { return sig; }
 //Métodos Set
 void nodoProfesor::setProfesor(profesor* p) { prof = p; }
 void nodoProfesor::setSiguiente(nodoProfesor* s) { sig = s; }
+
+//toString
+string nodoProfesor::toString() { return prof->toString(); }

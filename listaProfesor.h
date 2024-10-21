@@ -14,9 +14,9 @@ public:
 	~listaProfesor();
 	bool insertarPrimero(profesor*);
 	bool insertarFinal(profesor*);
-	string toString();
 	bool buscarPorId(string);
 	bool esVacia();
 	void eliminarProfesor(string);
 	void vaciarLista();
+	string toString();
 };
