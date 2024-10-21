@@ -15,5 +15,7 @@ public:
 
     void setEstudiante(estudiante* e);
     void setSiguiente(nodoEstudiante* s);
+
+    string toString();
 };
 
