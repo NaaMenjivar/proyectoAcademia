@@ -1,9 +1,13 @@
 #pragma once
 #include "nodoProfesor.h"
+#include "profesor.h"
 #include <iostream>
 #include <sstream>
 #include <string>
 using namespace std;
+
+class profesor;
+class nodoProfesor;
 
 class listaProfesor {
 private:
