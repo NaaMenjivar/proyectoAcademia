@@ -1,7 +1,7 @@
 #include "periodo.h"
 
 //Constructor y Destructor
-periodo::periodo(int num) : numTrimestre(num), grupos(nullptr), cursos(nullptr) {
+periodo::periodo(int num) : numTrimestre(num), grupos(new listaGrupo()), cursos(new listaCurso()) {
     switch (numTrimestre) {
     case 1:
         nombre = "Periodo I";

@@ -1,73 +1,86 @@
 #include <iostream>
-#include "listaPeriodo.h"
-#include "periodo.h"
+#include "listaGrupo.h"
+#include "grupo.h"
+#include "horario.h"
+#include "profesor.h"
 
 using namespace std;
 
 int main() {
-    // Crear objetos periodo
-    periodo* periodo1 = new periodo(1);  // Primer trimestre
-    periodo* periodo2 = new periodo(2);  // Segundo trimestre
-    periodo* periodo3 = new periodo(3);  // Tercer trimestre
-    periodo* periodo4 = new periodo(4);  // Cuarto trimestre
+    // Crear objetos Horario y Profesor para los grupos
+    horario* horario1 = new horario("08:00", "10:00", "Lunes, Miércoles");
+    horario* horario2 = new horario("10:00", "12:00", "Martes, Jueves");
+    horario* horario3 = new horario("14:00", "16:00", "Viernes");
 
-    // Crear la lista de periodos
-    listaPeriodo listaPeriodos;
+    profesor* profesor1 = new profesor("Dr. Juan Pérez", "PROF101", "555-1234", "juanperez@uni.edu", "Doctorado en Matemáticas");
+    profesor* profesor2 = new profesor("Dr. Ana Sánchez", "PROF102", "555-5678", "anasanchez@uni.edu", "Doctorado en Física");
 
-    // Test case: Insertar periodos en la lista
-    cout << "Agregando periodos a la lista:" << endl;
-    if (listaPeriodos.insertarPrimero(periodo1)) {
-        cout << "Periodo 1 (Trimestre 1) agregado correctamente al principio." << endl;
+    // Crear objetos Grupo
+    grupo* grupo1 = new grupo(101, 30, 25, horario1, profesor1);
+    grupo* grupo2 = new grupo(102, 40, 35, horario2, profesor2);
+    grupo* grupo3 = new grupo(103, 20, 15, horario3, profesor1);
+
+    // Crear lista de grupos
+    listaGrupo listaGrupos;
+
+    // Test case: Insertar grupos en la lista
+    cout << "Agregando grupos a la lista:" << endl;
+    if (listaGrupos.insertarPrimero(grupo1)) {
+        cout << "Grupo 101 agregado correctamente al principio." << endl;
     }
-    if (listaPeriodos.insertarFinal(periodo2)) {
-        cout << "Periodo 2 (Trimestre 2) agregado correctamente al final." << endl;
+    if (listaGrupos.insertarFinal(grupo2)) {
+        cout << "Grupo 102 agregado correctamente al final." << endl;
     }
-    if (listaPeriodos.insertarFinal(periodo3)) {
-        cout << "Periodo 3 (Trimestre 3) agregado correctamente al final." << endl;
-    }
-    if (listaPeriodos.insertarFinal(periodo4)) {
-        cout << "Periodo 4 (Trimestre 4) agregado correctamente al final." << endl;
+    if (listaGrupos.insertarFinal(grupo3)) {
+        cout << "Grupo 103 agregado correctamente al final." << endl;
     }
 
     // Mostrar la lista completa
-    cout << "\nContenido de la lista de periodos después de agregar periodos:" << endl;
-    cout << listaPeriodos.toString() << endl;
+    cout << "\nContenido de la lista de grupos después de agregar grupos:" << endl;
+    cout << listaGrupos.toString() << endl;
 
-    // Test case: Buscar un periodo por su número de trimestre
-    int numBuscar = 2;
-    cout << "\nBuscando periodo con número de trimestre: " << numBuscar << endl;
-    if (listaPeriodos.buscarPorNumPeriodo(numBuscar)) {
-        cout << "Periodo encontrado." << endl;
+    // Test case: Buscar un grupo por su número de grupo
+    int numBuscar = 102;
+    cout << "\nBuscando grupo con número de grupo: " << numBuscar << endl;
+    if (listaGrupos.buscarPorNumGrupo(numBuscar)) {
+        cout << "Grupo encontrado." << endl;
     }
     else {
-        cout << "Periodo no encontrado." << endl;
+        cout << "Grupo no encontrado." << endl;
     }
 
-    // Test case: Eliminar un periodo de la lista
-    int numEliminar = 1;  // Eliminar el primer periodo
-    cout << "\nEliminando periodo con número de trimestre: " << numEliminar << endl;
-    listaPeriodos.eliminarPeriodo(numEliminar);
+    // Test case: Eliminar un grupo de la lista
+    int numEliminar = 101;  // Eliminar el primer grupo
+    cout << "\nEliminando grupo con número de grupo: " << numEliminar << endl;
+    listaGrupos.eliminarGrupo(numEliminar);
 
     // Mostrar la lista después de la eliminación
-    cout << "\nContenido de la lista de periodos después de eliminar el periodo 1:" << endl;
-    cout << listaPeriodos.toString() << endl;
+    cout << "\nContenido de la lista de grupos después de eliminar el grupo 101:" << endl;
+    cout << listaGrupos.toString() << endl;
 
     // Vaciar la lista
-    cout << "\nVaciando la lista de periodos..." << endl;
-    listaPeriodos.vaciarLista();
+    cout << "\nVaciando la lista de grupos..." << endl;
+    listaGrupos.vaciar();
     cout << "Lista vaciada correctamente." << endl;
 
     // Mostrar la lista vacía
-    cout << "\nContenido de la lista de periodos después de vaciarla:" << endl;
-    cout << listaPeriodos.toString() << endl;
+    cout << "\nContenido de la lista de grupos después de vaciarla:" << endl;
+    cout << listaGrupos.toString() << endl;
 
     // Liberar memoria
-    delete periodo1;
-    delete periodo2;
-    delete periodo3;
-    delete periodo4;
+    delete horario1;
+    delete horario2;
+    delete horario3;
+    delete profesor1;
+    delete profesor2;
+    delete grupo1;
+    delete grupo2;
+    delete grupo3;
 
     return 0;
 }
+
+
+
 
 

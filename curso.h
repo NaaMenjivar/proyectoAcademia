@@ -14,7 +14,7 @@ private:
 	bool disponible;
 	listaGrupo* grupos;
 public:
-	curso(string, string, int, float, bool, listaGrupo*);
+	curso(string, string, int, float, bool);
 	~curso();
 
 	string getNombre();

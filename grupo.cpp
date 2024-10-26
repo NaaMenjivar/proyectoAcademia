@@ -1,8 +1,8 @@
 #include "grupo.h"
 
 //Constructor y Destructor
-grupo::grupo(int n, int c, int a, horario* h, profesor* p, listaEstudiante* e) :
-    numeroGrupo(n), capacidad(c), cantidadAlumnos(a), h(h), p(p), estudiantes(e) {}
+grupo::grupo(int n, int c, int a, horario* h, profesor* p) :
+    numeroGrupo(n), capacidad(c), cantidadAlumnos(a), h(h), p(p), estudiantes(new listaEstudiante()) {}
 grupo::~grupo() {
     if (estudiantes != nullptr) { 
         delete estudiantes; 

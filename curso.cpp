@@ -1,8 +1,8 @@
 #include "curso.h"
 
 //Constructor y Destructor
-curso::curso(string n, string i, int h, float p, bool d, listaGrupo* g) :
-    nombre(n), id(i), horas(h), precio(p), disponible(d), grupos(g) {}
+curso::curso(string n, string i, int h, float p, bool d) :
+    nombre(n), id(i), horas(h), precio(p), disponible(d), grupos(new listaGrupo()) {}
 curso::~curso() {
     if (grupos != nullptr) {
         delete grupos;

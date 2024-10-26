@@ -16,7 +16,7 @@ private:
 	profesor* p;
 	listaEstudiante* estudiantes;
 public:
-	grupo(int, int, int, horario*, profesor*, listaEstudiante*);
+	grupo(int, int, int, horario*, profesor*);
 	~grupo();
 
 	int getNumeroGrupo();

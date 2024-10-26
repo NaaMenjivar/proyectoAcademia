@@ -88,7 +88,7 @@ string listaCurso::toString() {
         while (actual != nullptr) { 
             if (actual->getCurso() != nullptr) { 
                 s << "----------------- " << t << " -----------------" << endl;
-                s << actual->getCurso()->toString() << endl;  
+                s << actual->toString() << endl;  
                 t++;
             }
             actual = actual->getSig();

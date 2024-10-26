@@ -23,6 +23,7 @@ bool listaPeriodo::insertarFinal(periodo* p) {
 		primero = new nodoPeriodo(p, nullptr);
 	}
 	else {
+		actual = primero;
 		while (actual != nullptr && actual->getSig() != nullptr) {
 			actual = actual->getSig();
 		}
