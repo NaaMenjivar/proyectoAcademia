@@ -22,5 +22,6 @@ public:
 	bool esVacia();
 	void eliminarEstudiante(string);
 	void vaciarLista();
+	estudiante* getEstudiante(string);
 	string toString();
 };

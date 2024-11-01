@@ -4,6 +4,7 @@
 #include <string>
 #include "listaGrupo.h"
 #include "listaCurso.h"
+#include "descuento.h"
 using namespace std;
 
 class periodo {
@@ -36,6 +37,9 @@ public:
 	bool agregarCurso(curso*);
 	bool buscarCurso(string);
 	void eliminarCurso(string);
+
+	descuento* getDescuentoPorCursos();
+	int contarCursosMatriculadosEstudiante(string);
 
 	string toString();
 };

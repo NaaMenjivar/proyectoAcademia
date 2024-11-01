@@ -90,6 +90,17 @@ void listaEstudiante::eliminarEstudiante(string id) {
 	}
 }
 
+estudiante* listaEstudiante::getEstudiante(string id) {
+	actual = primero; 
+	while (actual != nullptr) {
+		if (actual->getEstudiante()->getId() == id) { 
+			return actual->getEstudiante(); 
+		}
+		actual = actual->getSiguiente(); 
+	}
+	return nullptr;
+}
+
 void listaEstudiante::vaciarLista() {
 	while (!esVacia()) {
 		actual = primero;

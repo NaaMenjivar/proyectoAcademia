@@ -70,6 +70,31 @@ void periodo::eliminarCurso(string id) {
     cursos->eliminarCurso(id);
 }
 
+descuento* periodo::getDescuentoPorCursos() {
+    int cursosEnPeriodo = cursos->cantidadNodos();
+    float porcentajeDescuento = 0; 
+
+    if (cursosEnPeriodo >= 2) { 
+        porcentajeDescuento = 15; 
+    }
+
+    return new descuento(cursosEnPeriodo, porcentajeDescuento); 
+}
+
+int periodo::contarCursosMatriculadosEstudiante(string idEstudiante) {
+    int totalCursos = 0; 
+    nodoGrupo* nodoActual = grupos->getPrimero(); 
+
+    while (nodoActual != nullptr) {
+        grupo* g = nodoActual->getGrupo(); 
+        if (g->getEstudiantes()->buscarPorId(idEstudiante)) { 
+            totalCursos++; 
+        }
+        nodoActual = grupos->getSig(nodoActual); 
+    }
+    return totalCursos;
+}
+
 string periodo::toString() {
     stringstream s;
     s << "Nombre del periodo: " << nombre << " (" << mesInicio << " - " << mesFin << ")" << endl;

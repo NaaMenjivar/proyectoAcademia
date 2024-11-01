@@ -76,6 +76,37 @@ void listaCurso::eliminarCurso(string id) {
     }
 }
 
+curso* listaCurso::getCurso(string id) {
+    actual = primero;
+    while (actual != nullptr) {
+        if (actual->getCurso()->getId() == id) {
+            return actual->getCurso();
+        }
+        actual = actual->getSig();
+    }
+    return nullptr;
+}
+
+float listaCurso::calcularSubtotal() {
+    float subtotal = 0;
+    actual = primero;
+    while (actual != nullptr) {
+        subtotal += actual->getCurso()->getPrecio();
+        actual = actual->getSig();
+    }
+    return subtotal;
+}
+
+int listaCurso::cantidadNodos() {
+    int count = 0;
+    actual = primero; 
+    while (actual != nullptr) {
+        count++;
+        actual = actual->getSig();
+    }
+    return count;
+}
+
 string listaCurso::toString() {
     stringstream s;
     int t = 1;
@@ -96,3 +127,4 @@ string listaCurso::toString() {
     }
     return s.str();
 }
+

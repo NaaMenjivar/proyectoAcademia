@@ -25,5 +25,8 @@ public:
 	bool esVacia();
 	void eliminarPeriodo(int);
 	void vaciarLista();
+	periodo* getPeriodo(int);
+	nodoPeriodo* getPrimero();
+	nodoPeriodo* getSig(nodoPeriodo*);
 	string toString();
 };

@@ -28,5 +28,8 @@ public:
 	bool insertarFinal(grupo*);
 	bool buscarPorNumGrupo(int);
 	void eliminarGrupo(int);
+	grupo* getGrupo(int);
+	nodoGrupo* getPrimero();
+	nodoGrupo* getSig(nodoGrupo*);
 	string toString();
 };

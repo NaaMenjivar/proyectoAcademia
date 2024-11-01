@@ -93,3 +93,14 @@ void listaProfesor::vaciarLista() {
 		delete actual;
 	}
 }
+
+profesor* listaProfesor::getProfesor(string id) {
+	actual = primero;  
+	while (actual != nullptr) { 
+		if (actual->getProfesor()->getId() == id) {
+			return actual->getProfesor(); 
+		}
+		actual = actual->getSiguiente(); 
+	}
+	return nullptr;
+}

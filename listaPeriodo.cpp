@@ -76,6 +76,25 @@ void listaPeriodo::vaciarLista() {
 	}
 }
 
+periodo* listaPeriodo::getPeriodo(int numTrimestre) {
+	actual = primero;
+	while (actual != nullptr) {
+		if (actual->getPeriodo()->getNumTrimestre() == numTrimestre) {
+			return actual->getPeriodo();
+		}
+		actual = actual->getSig();
+	}
+	return nullptr;
+}
+
+nodoPeriodo* listaPeriodo::getPrimero() {
+	return primero;
+}
+
+nodoPeriodo* listaPeriodo::getSig(nodoPeriodo* nodo) {
+	return nodo ? nodo->getSig() : nullptr; 
+}
+
 string listaPeriodo::toString() {
 	stringstream s; 
 	int t = 1; 

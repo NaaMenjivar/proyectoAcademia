@@ -138,14 +138,12 @@
     <ClCompile Include="interfaz.cpp" />
     <ClCompile Include="listaCurso.cpp" />
     <ClCompile Include="listaEstudiante.cpp" />
-    <ClCompile Include="listaFactura.cpp" />
     <ClCompile Include="listaGrupo.cpp" />
     <ClCompile Include="listaPeriodo.cpp" />
     <ClCompile Include="listaProfesor.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="nodoCurso.cpp" />
     <ClCompile Include="nodoEstudiante.cpp" />
-    <ClCompile Include="nodoFactura.cpp" />
     <ClCompile Include="nodoGrupo.cpp" />
     <ClCompile Include="nodoPeriodo.cpp" />
     <ClCompile Include="nodoProfesor.cpp" />
@@ -164,7 +162,6 @@
     <ClInclude Include="interfaz.h" />
     <ClInclude Include="listaCurso.h" />
     <ClInclude Include="listaEstudiante.h" />
-    <ClInclude Include="listaFactura.h" />
     <ClInclude Include="listaGrupo.h" />
     <ClInclude Include="listaPeriodo.h" />
     <ClInclude Include="listaProfesor.h" />

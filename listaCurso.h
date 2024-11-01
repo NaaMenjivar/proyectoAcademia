@@ -24,5 +24,8 @@ public:
 	bool insertarFinal(curso*);
 	bool buscarPorId(string);
 	void eliminarCurso(string);
+	curso* getCurso(string id);
+	float calcularSubtotal();
+	int cantidadNodos();
 	string toString();
 };

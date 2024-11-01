@@ -76,6 +76,25 @@ void listaGrupo::eliminarGrupo(int num) {
     }
 }
 
+grupo* listaGrupo::getGrupo(int num) {
+    actual = primero;
+    while (actual != nullptr) {
+        if (actual->getGrupo()->getNumeroGrupo() == num) {
+            return actual->getGrupo();
+        }
+        actual = actual->getSig();
+    }
+    return nullptr;
+}
+
+nodoGrupo* listaGrupo::getPrimero() {
+    return primero; 
+}
+
+nodoGrupo* listaGrupo::getSig(nodoGrupo* nodo) {
+    return nodo ? nodo->getSig() : nullptr;
+}
+
 string listaGrupo::toString() {
     stringstream s;
     int t = 1;
