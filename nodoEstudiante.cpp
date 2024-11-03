@@ -11,3 +11,6 @@ nodoEstudiante* nodoEstudiante::getSiguiente() { return sig; }
 //Métodos Set 
 void nodoEstudiante::setEstudiante(estudiante* e) { est = e; }
 void nodoEstudiante::setSiguiente(nodoEstudiante* s) { sig = s; }
+
+//toString
+string nodoEstudiante::toString() { return est->toString(); }

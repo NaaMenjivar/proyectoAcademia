@@ -1,9 +1,13 @@
 #pragma once
 #include "nodoProfesor.h"
+#include "profesor.h"
 #include <iostream>
 #include <sstream>
 #include <string>
 using namespace std;
+
+class profesor;
+class nodoProfesor;
 
 class listaProfesor {
 private:
@@ -14,9 +18,10 @@ public:
 	~listaProfesor();
 	bool insertarPrimero(profesor*);
 	bool insertarFinal(profesor*);
-	string toString();
 	bool buscarPorId(string);
 	bool esVacia();
 	void eliminarProfesor(string);
 	void vaciarLista();
+	profesor* getProfesor(string);
+	string toString();
 };

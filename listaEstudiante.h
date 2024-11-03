@@ -1,8 +1,13 @@
+#pragma once
 #include "nodoEstudiante.h"
+#include "estudiante.h"
 #include <iostream>
 #include <sstream>
 #include <string>
 using namespace std;
+
+class estudiante;
+class nodoEstudiante;
 
 class listaEstudiante {
 private:
@@ -13,10 +18,10 @@ public:
 	~listaEstudiante();
 	bool insertarPrimero(estudiante*);
 	bool insertarFinal(estudiante*);
-	string toString();
 	bool buscarPorId(string);
 	bool esVacia();
 	void eliminarEstudiante(string);
 	void vaciarLista();
-
+	estudiante* getEstudiante(string);
+	string toString();
 };

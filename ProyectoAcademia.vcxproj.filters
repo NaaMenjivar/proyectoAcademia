@@ -81,9 +81,6 @@
     <ClCompile Include="listaEstudiante.cpp">
       <Filter>Archivos de origen\Listas</Filter>
     </ClCompile>
-    <ClCompile Include="listaFactura.cpp">
-      <Filter>Archivos de origen\Listas</Filter>
-    </ClCompile>
     <ClCompile Include="listaGrupo.cpp">
       <Filter>Archivos de origen\Listas</Filter>
     </ClCompile>
@@ -97,9 +94,6 @@
       <Filter>Archivos de origen\Nodos</Filter>
     </ClCompile>
     <ClCompile Include="nodoEstudiante.cpp">
-      <Filter>Archivos de origen\Nodos</Filter>
-    </ClCompile>
-    <ClCompile Include="nodoFactura.cpp">
       <Filter>Archivos de origen\Nodos</Filter>
     </ClCompile>
     <ClCompile Include="nodoGrupo.cpp">
@@ -150,9 +144,6 @@
       <Filter>Archivos de encabezado\Listas</Filter>
     </ClInclude>
     <ClInclude Include="listaEstudiante.h">
-      <Filter>Archivos de encabezado\Listas</Filter>
-    </ClInclude>
-    <ClInclude Include="listaFactura.h">
       <Filter>Archivos de encabezado\Listas</Filter>
     </ClInclude>
     <ClInclude Include="listaGrupo.h">

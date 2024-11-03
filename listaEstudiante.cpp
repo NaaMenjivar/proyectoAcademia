@@ -38,15 +38,26 @@ bool listaEstudiante::insertarFinal(estudiante* est) {
 
 string listaEstudiante::toString() {
 	stringstream s;
-	actual = primero;
-	while (actual != nullptr) {
-		s << actual->getEstudiante()->toString();
-		actual = actual->getSiguiente();
+	int t = 1;
+	if (esVacia()) {
+		s << "No hay informacion que mostrar, la lista esta vacia." << endl;
+	}
+	else {
+		actual = primero;
+		while (actual != nullptr) {
+			s << "---------------- " << t << " ----------------" << endl;
+			s << actual->toString();
+			t++;
+			actual = actual->getSiguiente();
+		}
 	}
 	return s.str();
 }
 
 bool listaEstudiante::buscarPorId(string id) {
+	if (esVacia()) {
+		return false;
+	}
 	actual = primero;
 	while (actual != nullptr) {
 		if (actual->getEstudiante()->getId() == id) {
@@ -79,8 +90,19 @@ void listaEstudiante::eliminarEstudiante(string id) {
 	}
 }
 
+estudiante* listaEstudiante::getEstudiante(string id) {
+	actual = primero; 
+	while (actual != nullptr) {
+		if (actual->getEstudiante()->getId() == id) { 
+			return actual->getEstudiante(); 
+		}
+		actual = actual->getSiguiente(); 
+	}
+	return nullptr;
+}
+
 void listaEstudiante::vaciarLista() {
-	while (primero != nullptr) {
+	while (!esVacia()) {
 		actual = primero;
 		primero = primero->getSiguiente();
 		delete actual;
