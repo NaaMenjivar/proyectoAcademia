@@ -111,6 +111,9 @@
     <ClCompile Include="profesor.cpp">
       <Filter>Archivos de origen\Clases</Filter>
     </ClCompile>
+    <ClCompile Include="conversionDatos.cpp">
+      <Filter>Archivos de origen\Archivos</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="academia.h">
@@ -178,6 +181,9 @@
     </ClInclude>
     <ClInclude Include="profesor.h">
       <Filter>Archivos de encabezado\Clases</Filter>
+    </ClInclude>
+    <ClInclude Include="conversionDatos.h">
+      <Filter>Archivos de encabezado\Archivos</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

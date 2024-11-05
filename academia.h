@@ -22,25 +22,37 @@ public:
     academia();
     ~academia();
 
+    //Métodos de acceso a las listas
+    listaCurso* getCursos();
+    listaGrupo* getGrupos();
+    listaEstudiante* getEstudiantes();
+    listaProfesor* getProfesores();
+    listaPeriodo* getPeriodos();
+
     // Métodos de administración de listas
     bool agregarCurso(curso* c);
     bool eliminarCurso(string id);
+    bool buscarCurso(string id);
     string listarCursos();
 
     bool agregarGrupo(grupo* g, int numPeriodo);
     bool eliminarGrupo(int numGrupo);
+    bool buscarGrupo(int numGrupo);
     string listarGrupos();
 
     bool agregarEstudiante(estudiante* e);
     bool eliminarEstudiante(string id);
+    bool buscarEstudiante(string id);
     string listarEstudiantes();
 
     bool agregarProfesor(profesor* p);
     bool eliminarProfesor(string id); 
+    bool buscarProfesor(string id);
     string listarProfesores(); 
 
     bool agregarPeriodo(periodo* p);
     bool eliminarPeriodo(int num);
+    bool buscarPeriodo(int num);
     string listarPeriodos();
 
     // Métodos de matrícula

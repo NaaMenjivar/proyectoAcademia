@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="academia.cpp" />
     <ClCompile Include="archivo.cpp" />
+    <ClCompile Include="conversionDatos.cpp" />
     <ClCompile Include="curso.cpp" />
     <ClCompile Include="descuento.cpp" />
     <ClCompile Include="estudiante.cpp" />
@@ -153,6 +154,7 @@
   <ItemGroup>
     <ClInclude Include="academia.h" />
     <ClInclude Include="archivo.h" />
+    <ClInclude Include="conversionDatos.h" />
     <ClInclude Include="curso.h" />
     <ClInclude Include="descuento.h" />
     <ClInclude Include="estudiante.h" />

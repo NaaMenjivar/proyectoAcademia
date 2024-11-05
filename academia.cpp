@@ -18,6 +18,27 @@ academia::~academia() {
     delete periodos; 
 }
 
+//Métodos de acceso a las listas
+listaCurso* academia::getCursos() {
+    return cursos;
+}
+
+listaGrupo* academia::getGrupos() {
+    return grupos;
+}
+
+listaEstudiante* academia::getEstudiantes() {
+    return estudiantes;
+}
+
+listaProfesor* academia::getProfesores() {
+    return profesores;
+}
+
+listaPeriodo* academia::getPeriodos() {
+    return periodos;
+}
+
 // Métodos de administración de listas
 bool academia::agregarCurso(curso* c) {
     return cursos->insertarFinal(c);
@@ -29,6 +50,10 @@ bool academia::eliminarCurso(string id) {
     }
     cursos->eliminarCurso(id);
     return true;
+}
+
+bool academia::buscarCurso(string id) {
+    return cursos->buscarPorId(id);
 }
 
 string academia::listarCursos() {
@@ -49,6 +74,10 @@ bool academia::eliminarGrupo(int numGrupo) {
     return true;
 }
 
+bool academia::buscarGrupo(int numGrupo) {
+    return grupos->buscarPorNumGrupo(numGrupo);
+}
+
 string academia::listarGrupos() {
     return grupos->toString();
 }
@@ -63,6 +92,10 @@ bool academia::eliminarEstudiante(string id) {
     }
     estudiantes->eliminarEstudiante(id);
     return true;
+}
+
+bool academia::buscarEstudiante(string id) {
+    return estudiantes->buscarPorId(id);
 }
 
 string academia::listarEstudiantes() {
@@ -81,6 +114,10 @@ bool academia::eliminarProfesor(string id) {
     return true;
 }
 
+bool academia::buscarProfesor(string id) {
+    return profesores->buscarPorId(id);
+}
+
 string academia::listarProfesores() {
     return profesores->toString();
 }
@@ -95,6 +132,10 @@ bool academia::eliminarPeriodo(int num) {
     }
     periodos->eliminarPeriodo(num);
     return true;
+}
+
+bool academia::buscarPeriodo(int num) {
+    return periodos->buscarPorNumPeriodo(num);
 }
 
 string academia::listarPeriodos() {

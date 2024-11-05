@@ -24,7 +24,7 @@ public:
 	void ingresarProfesor();
 	void ingresarEstudiante();
 	void ingresarPeriodo();
-	void agregarCurso(); 
+	void ingresarCurso(); 
 	void ingresarGrupo();
 	void asignarProfesorAGrupo();
 
