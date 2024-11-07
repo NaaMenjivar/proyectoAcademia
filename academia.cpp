@@ -4,19 +4,20 @@
 academia::academia() {
     archivos = new archivo();
     estudiantes = (archivos->recuperarEstudiantes()) ? archivos->recuperarEstudiantes() : new listaEstudiante();
-    cursos = new listaCurso();
-    grupos = new listaGrupo();
-    estudiantes = new listaEstudiante();
-    profesores = new listaProfesor();
-    periodos = new listaPeriodo();
+    cursos = (archivos->recuperarCursos()) ? archivos->recuperarCursos() : new listaCurso();
+    grupos = (archivos->recuperarGrupos()) ? archivos->recuperarGrupos() : new listaGrupo();
+    profesores = (archivos->recuperarProfesores()) ? archivos->recuperarProfesores() : new listaProfesor();
+    periodos = (archivos->recuperarPeriodos()) ? archivos->recuperarPeriodos() : new listaPeriodo(); 
 
 }
 
 // Destructor
 academia::~academia() {
-    //yamar los guardar
     archivos->guardarEstudiantes(estudiantes);
     archivos->guardarProfesores(profesores);
+    archivos->guardarGrupos(grupos);
+    archivos->guardarCursos(cursos);
+    archivos->guardarPeriodos(periodos);
     delete cursos;
     delete grupos;
     delete estudiantes;
