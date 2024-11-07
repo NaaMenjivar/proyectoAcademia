@@ -2,20 +2,27 @@
 
 // Constructor
 academia::academia() {
+    archivos = new archivo();
+    estudiantes = (archivos->recuperarEstudiantes()) ? archivos->recuperarEstudiantes() : new listaEstudiante();
     cursos = new listaCurso();
     grupos = new listaGrupo();
     estudiantes = new listaEstudiante();
     profesores = new listaProfesor();
     periodos = new listaPeriodo();
+
 }
 
 // Destructor
 academia::~academia() {
+    //yamar los guardar
+    archivos->guardarEstudiantes(estudiantes);
+    archivos->guardarProfesores(profesores);
     delete cursos;
     delete grupos;
     delete estudiantes;
     delete profesores; 
     delete periodos; 
+    delete archivos;
 }
 
 //Métodos de acceso a las listas

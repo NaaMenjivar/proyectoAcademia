@@ -28,7 +28,7 @@ periodo::periodo(int num) : numTrimestre(num), grupos(new listaGrupo()), cursos(
     }
 }
 periodo::~periodo() {
-    delete grupos;
+    delete grupos; 
     delete cursos;
 }
 
@@ -46,6 +46,8 @@ void periodo::setMesInicio(string m) { mesInicio = m; }
 void periodo::setMesFin(string m) { mesFin = m; }
 void periodo::setNumTrimestre(int n) { numTrimestre = n; }
 
+void periodo::setCursos(listaCurso* c) { cursos = c; }
+
 bool periodo::agregarGrupo(grupo* g) {
     return grupos->insertarPrimero(g);
 }
@@ -57,6 +59,8 @@ bool periodo::buscarGrupo(int n) {
 void periodo::eliminarGrupo(int n) {
     grupos->eliminarGrupo(n);
 }
+
+void periodo::setGrupos(listaGrupo* g) { grupos = g; }
 
 bool periodo::agregarCurso(curso* c) {
     return cursos->insertarPrimero(c);

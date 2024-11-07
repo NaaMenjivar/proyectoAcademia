@@ -11,6 +11,10 @@ listaEstudiante::~listaEstudiante() {
 	}
 }
 
+nodoEstudiante* listaEstudiante::getPrimero() {
+	return primero;
+}
+
 bool listaEstudiante::insertarPrimero(estudiante* est) {
 	if (buscarPorId(est->getId())) {
 		return false;

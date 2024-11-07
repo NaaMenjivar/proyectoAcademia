@@ -15,6 +15,10 @@ bool listaProfesor::insertarPrimero(profesor* profe) {
 		return true;
 }
 
+nodoProfesor* listaProfesor::getPrimero() {
+	return primero;
+}
+
 bool listaProfesor::insertarFinal(profesor* prof) {
 	if (buscarPorId(prof->getId())) {
 		return false;

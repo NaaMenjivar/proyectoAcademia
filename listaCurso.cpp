@@ -76,6 +76,10 @@ void listaCurso::eliminarCurso(string id) {
     }
 }
 
+nodoCurso* listaCurso::getPrimero() {
+    return primero; 
+}
+
 curso* listaCurso::getCurso(string id) {
     actual = primero;
     while (actual != nullptr) {

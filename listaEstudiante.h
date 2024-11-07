@@ -21,6 +21,7 @@ public:
 	bool buscarPorId(string);
 	bool esVacia();
 	void eliminarEstudiante(string);
+	nodoEstudiante* getPrimero();
 	void vaciarLista();
 	estudiante* getEstudiante(string);
 	string toString();

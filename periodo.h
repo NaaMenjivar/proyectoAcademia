@@ -30,16 +30,18 @@ public:
 	void setMesFin(string);
 	void setNumTrimestre(int);
 
+	void setCursos(listaCurso*);
 	bool agregarGrupo(grupo*);
 	bool buscarGrupo(int);
 	void eliminarGrupo(int);
 
+	void setGrupos(listaGrupo*);
 	bool agregarCurso(curso*);
 	bool buscarCurso(string);
 	void eliminarCurso(string);
 
 	descuento* getDescuentoPorCursos();
-	int contarCursosMatriculadosEstudiante(string);
+	int contarCursosMatriculadosEstudiante(string); 
 
 	string toString();
 };

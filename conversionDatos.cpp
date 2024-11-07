@@ -40,3 +40,20 @@ string conversionDatos::convBool(bool v) {
     return v ? "1" : "0";
 }
 
+
+//Conversión de horario
+horario* conversionDatos::conversionHorario(string s_) {
+    int datosInt = conversionInt(s_);
+
+    // Extraer horas y minutos
+    int horaInicioInt = datosInt / 1000000;
+    int horaFinInt = (datosInt / 10000) % 10000;
+
+    string horaInicio = convInt(horaInicioInt / 100) + ":" + (horaInicioInt % 100 < 10 ? "0" : "") + convInt(horaInicioInt % 100);
+    string horaFin = convInt(horaFinInt / 100) + ":" + (horaFinInt % 100 < 10 ? "0" : "") + convInt(horaFinInt % 100);
+
+    string diasSemana = s_.substr(8);
+
+    return new horario(horaInicio, horaFin, diasSemana);
+}
+

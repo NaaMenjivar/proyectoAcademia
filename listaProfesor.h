@@ -20,6 +20,7 @@ public:
 	bool insertarFinal(profesor*);
 	bool buscarPorId(string);
 	bool esVacia();
+	nodoProfesor* getPrimero();
 	void eliminarProfesor(string);
 	void vaciarLista();
 	profesor* getProfesor(string);

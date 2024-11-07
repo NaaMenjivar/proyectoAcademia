@@ -1,4 +1,5 @@
 #pragma once
+#include "horario.h"
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -15,5 +16,8 @@ public:
     string convInt(int v);
     string convFloat(float v);
     string convBool(bool v);
+    
+    //Conversión horario
+    horario* conversionHorario(string s_);
 };
 

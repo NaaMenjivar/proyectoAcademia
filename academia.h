@@ -6,6 +6,7 @@
 #include "listaPeriodo.h"
 #include "factura.h"
 #include "descuento.h"
+#include "archivo.h"
 
 using namespace std;
 
@@ -16,7 +17,7 @@ private:
     listaEstudiante* estudiantes;
     listaProfesor* profesores;
     listaPeriodo* periodos;
-
+    archivo* archivos;
 public:
     // Constructor y Destructor
     academia();
