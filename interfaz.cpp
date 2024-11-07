@@ -8,37 +8,33 @@ interfaz::interfaz() {
 //Menú Principal
 void interfaz::menuPrincipal() {
     int opcion;
-
+    system("cls");
     do {
         system("cls");
         cout << "\n--- Menu Principal ---\n";
         cout << "1. Submenu Administracion\n";
         cout << "2. Submenu Matricula\n";
         cout << "3. Submenu Busquedas e Informes\n";
-        cout << "4. Guardar los Datos en Archivos\n";
-        cout << "5. Salir\n";
+        cout << "4. Salir\n";
         cout << "Seleccione una opcion: ";
         cin >> opcion; 
+        cin.ignore();
 
         switch (opcion) { 
         case 1:
             system("cls");
-            submenuAdministracion();
+            this->submenuAdministracion();
             break;
         case 2:
             system("cls");
-            submenuMatricula();
+            this->submenuMatricula();
             break;
         case 3:
             system("cls");
-            submenuInformes(); 
+            this->submenuInformes(); 
             break;
         case 4:
             system("cls");
-            guardarDatos();
-            system("pause");
-            break;
-        case 5:
             cout << "Saliendo del programa.\n";
             break;
         default:
@@ -46,7 +42,7 @@ void interfaz::menuPrincipal() {
             system("pause");
             break;
         }
-    } while (opcion != 5);
+    } while (opcion != 4);
 }
 
 //Submenú administración
@@ -68,32 +64,32 @@ void interfaz::submenuAdministracion() {
 
         switch (opcion) { 
         case 1:
+            system("cls");
             ingresarProfesor();
-            system("pause");
             break;
         case 2:
+            system("cls");
             ingresarEstudiante();
-            system("pause");
             break;
         case 3:
+            system("cls");
             ingresarPeriodo();
-            system("pause");
             break;
         case 4:
+            system("cls");
             ingresarCurso();
-            system("pause");
             break;
         case 5:
+            system("cls");
             ingresarGrupo();
-            system("pause");
             break;
         case 6:
+            system("cls");
             asignarProfesorAGrupo();
-            system("pause");
             break;
         case 0:
+            system("cls");
             cout << "Regresando al menu principal.\n";
-            system("pause");
             menuPrincipal();
             break;
         default:
@@ -118,16 +114,16 @@ void interfaz::submenuMatricula() {
 
         switch (opcion) {
         case 1:
+            system("cls");
             matricularEstudiante();
-            system("pause");
             break;
         case 2:
+            system("cls");
             desmatricularEstudiante();
-            system("pause");
             break;
         case 0:
+            system("cls");
             cout << "Regresando al menu principal.\n";
-            system("pause");
             menuPrincipal();
             break;
         default:
@@ -157,32 +153,32 @@ void interfaz::submenuInformes() {
 
         switch (opcion) {
         case 1:
+            system("cls");
             mostrarInformeProfesores();
-            system("pause");
             break;
         case 2:
+            system("cls");
             mostrarInformeEstudiantes();
-            system("pause");
             break;
         case 3:
+            system("cls");
             mostrarInformeCursosEstudiante();
-            system("pause");
             break;
         case 4:
+            system("cls");
             mostrarInformeProfesorEspecifico();
-            system("pause");
             break;
         case 5:
+            system("cls");
             mostrarInformePeriodos();
-            system("pause");
             break;
         case 6:
+            system("cls");
             mostrarInformeGrupoEspecifico();
-            system("pause");
             break;
         case 0:
+            system("cls");
             cout << "Regresando al menu principal.\n";
-            system("pause");
             menuPrincipal();
             break;
         default:
@@ -192,18 +188,13 @@ void interfaz::submenuInformes() {
     } while (opcion != 0);
 }
 
-//Guardar datos
-void interfaz::guardarDatos() {
-
-}
-
 //Métodos de ingreso
 void interfaz::ingresarProfesor() {
     system("cls");
     string nombre, id, telefono, email, gradoAcademico;
 
     cout << "Ingrese el ID del profesor:\t";
-    cin >> id;
+    getline(cin, id);
     cout << endl;
 
     if (acad->buscarProfesor(id)) {
@@ -213,16 +204,16 @@ void interfaz::ingresarProfesor() {
     }
 
     cout << "Ingrese el nombre del profesor:\t";
-    cin >> nombre;
+    getline(cin, nombre);
     cout << endl;
     cout << "Ingrese el telefono del profesor:\t";
-    cin >> telefono;
+    getline(cin, telefono);
     cout << endl;
     cout << "Ingrese el email del profesor:\t";
-    cin >> email;
+    getline(cin, email);
     cout << endl;
     cout << "Ingrese el grado academico del profesor:\t";
-    cin >> gradoAcademico; 
+    getline(cin, gradoAcademico);
     cout << endl;
 
     if (!nombre.empty() || !telefono.empty() || !email.empty() || !gradoAcademico.empty()) {
@@ -246,7 +237,7 @@ void interfaz::ingresarEstudiante() {
     string nombre, id, especialidad, telefono, email;
 
     cout << "Ingrese el ID del estudiante:\t";
-    cin >> id;
+    getline(cin, id);
     cout << endl;
 
     if (acad->buscarEstudiante(id)) {
@@ -256,16 +247,16 @@ void interfaz::ingresarEstudiante() {
     }
 
     cout << "Ingrese el nombre del estudiante:\t";
-    cin >> nombre; 
+    getline(cin, nombre);
     cout << endl;
     cout << "Ingrese la especialidad del estudiante:\t";
-    cin >> especialidad;
+    getline(cin, especialidad);
     cout << endl;
     cout << "Ingrese el telefono del estudiante:\t";
-    cin >> telefono;
+    getline(cin, telefono);
     cout << endl;
     cout << "Ingrese el email del estudiante:\t";
-    cin >> email;
+    getline(cin, email);
     cout << endl;
 
     if (!nombre.empty() || !especialidad.empty() || !telefono.empty() || !email.empty()) {
@@ -322,7 +313,7 @@ void interfaz::ingresarCurso() {
     bool disponible;
 
     cout << "Ingrese el ID del curso:\t";
-    cin >> id;
+    getline(cin, id);
     cout << endl;
 
     if (acad->buscarCurso(id)) {
@@ -332,7 +323,7 @@ void interfaz::ingresarCurso() {
     }
 
     cout << "Ingrese el nombre del curso:\t";
-    cin >> nombre;
+    getline(cin, nombre);
     cout << endl;
     cout << "Ingrese la cantidad de horas del curso:\t";
     cin >> horas;
@@ -368,7 +359,7 @@ void interfaz::ingresarGrupo() {
     profesor* prof = nullptr;
 
     cout << "Ingrese el ID del curso para el nuevo grupo:\t";
-    cin >> idCurso; 
+    getline(cin, idCurso);
     cout << endl;
 
     if (!acad->buscarCurso(idCurso)) {
@@ -387,13 +378,13 @@ void interfaz::ingresarGrupo() {
 
     cout << "Informacion del horario:\n";
     cout << "Ingrese el horario de inicio:\t";
-    cin >> horarioInicio;
+    getline(cin, horarioInicio);
     cout << endl;
     cout << "Ingrese el horario de fin:\t";
-    cin >> horarioFin;
+    getline(cin, horarioFin);
     cout << endl;
     cout << "Ingrese los dias de la semana del grupo:\t";
-    cin >> diasSemana; 
+    getline(cin, diasSemana);
     cout << endl; 
 
     if (!horarioInicio.empty() || !horarioFin.empty() || !diasSemana.empty()) {
@@ -423,7 +414,7 @@ void interfaz::asignarProfesorAGrupo() {
     int numGrupo;
 
     cout << "Ingrese el ID para el curso del grupo correspondiente:\t";
-    cin >> idCurso;
+    getline(cin, idCurso);
     cout << endl; 
 
     if (!acad->buscarCurso(idCurso)) {
@@ -444,7 +435,7 @@ void interfaz::asignarProfesorAGrupo() {
     grupo* g = acad->getCursos()->getCurso(idCurso)->getGrupos()->getGrupo(numGrupo);
 
     cout << "Ingrese el ID del profesor que desea asignar:\t";
-    cin >> idProfesor;
+    getline(cin, idProfesor);
     cout << endl; 
     if (!acad->buscarProfesor(idProfesor)) {
         cout << "Error: El profesor ingresado no esta registrado en el sistema.\n";
@@ -481,7 +472,7 @@ void interfaz::matricularEstudiante() {
     }
 
     cout << "Ingrese el ID del estudiante que desea matricular: ";
-    cin >> idEstudiante; 
+    getline(cin, idEstudiante);
     if (!acad->buscarEstudiante(idEstudiante)) {
         cout << "Error: El estudiante ingresado no está registrado en el sistema.\n";
         system("pause");
@@ -489,7 +480,7 @@ void interfaz::matricularEstudiante() {
     }
 
     cout << "Ingrese el ID del curso en el que desea matricular al estudiante: ";
-    cin >> idCurso; 
+    getline(cin, idCurso); 
     if (!acad->buscarCurso(idCurso)) {
         cout << "Error: El curso ingresado no está registrado en el sistema.\n";
         system("pause");
@@ -540,7 +531,7 @@ void interfaz::desmatricularEstudiante() {
     }
 
     cout << "Ingrese el ID del estudiante que desea desmatricular: ";
-    cin >> idEstudiante;
+    getline(cin, idEstudiante);
     if (!acad->buscarEstudiante(idEstudiante)) { 
         cout << "Error: El estudiante ingresado no está registrado en el sistema.\n";
         system("pause");
@@ -548,7 +539,7 @@ void interfaz::desmatricularEstudiante() {
     }
 
     cout << "Ingrese el ID del curso del que desea desmatricular al estudiante: ";
-    cin >> idCurso;
+    getline(cin, idCurso);
     if (!acad->buscarCurso(idCurso)) { 
         cout << "Error: El curso ingresado no está registrado en el sistema.\n";
         system("pause");
@@ -605,7 +596,7 @@ void interfaz::mostrarInformeCursosEstudiante() {
     system("cls");
     string idEstudiante; 
     cout << "Ingrese el ID del estudiante: ";
-    cin >> idEstudiante; 
+    getline(cin, idEstudiante);
 
     cout << "----- Informe de Cursos Matriculados por el Estudiante -----\n";
     string informe = acad->informeCursosMatriculadosEstudiante(idEstudiante); 
@@ -622,7 +613,7 @@ void interfaz::mostrarInformeProfesorEspecifico() {
     system("cls");
     string idProfesor; 
     cout << "Ingrese el ID del profesor: ";
-    cin >> idProfesor; 
+    getline(cin, idProfesor);
 
     cout << "----- Informe del Profesor Específico -----\n";
     string informe = acad->informeProfesorEspecifico(idProfesor); 
@@ -654,7 +645,7 @@ void interfaz::mostrarInformeGrupoEspecifico() {
     int numGrupo;
 
     cout << "Ingrese el ID del curso: ";
-    cin >> idCurso; 
+    getline(cin, idCurso);
 
     cout << "Ingrese el número de grupo: ";
     cin >> numGrupo; 
