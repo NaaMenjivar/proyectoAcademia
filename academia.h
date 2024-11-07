@@ -73,5 +73,4 @@ public:
 
     // Persistencia de datos
     void guardarDatos();
-    void cargarDatos();
 };

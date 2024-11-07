@@ -5,6 +5,12 @@ interfaz::interfaz() {
 	acad = new academia();
 }
 
+//Destructor
+interfaz::~interfaz() {
+    acad->guardarDatos();
+    delete acad;
+}
+
 //Menú Principal
 void interfaz::menuPrincipal() {
     int opcion;
@@ -192,9 +198,11 @@ void interfaz::submenuInformes() {
 void interfaz::ingresarProfesor() {
     system("cls");
     string nombre, id, telefono, email, gradoAcademico;
+    profesor* p = nullptr;
 
-    cout << "Ingrese el ID del profesor:\t";
+    cout << "Ingrese el ID del profesor:\t"; 
     getline(cin, id);
+    cin.ignore();
     cout << endl;
 
     if (acad->buscarProfesor(id)) {
@@ -203,31 +211,36 @@ void interfaz::ingresarProfesor() {
         return;
     }
 
-    cout << "Ingrese el nombre del profesor:\t";
+    cout << "Ingrese el nombre del profesor:\t"; 
     getline(cin, nombre);
+    cin.ignore();
     cout << endl;
     cout << "Ingrese el telefono del profesor:\t";
     getline(cin, telefono);
+    cin.ignore();
     cout << endl;
-    cout << "Ingrese el email del profesor:\t";
+    cout << "Ingrese el email del profesor:\t"; 
     getline(cin, email);
+    cin.ignore();
     cout << endl;
-    cout << "Ingrese el grado academico del profesor:\t";
+    cout << "Ingrese el grado academico del profesor:\t"; 
     getline(cin, gradoAcademico);
+    cin.ignore(); 
     cout << endl;
 
     if (!nombre.empty() || !telefono.empty() || !email.empty() || !gradoAcademico.empty()) {
-        profesor* p = new profesor(nombre, id, telefono, email, gradoAcademico);
+        p = new profesor(nombre, id, telefono, email, gradoAcademico);
         if (acad->agregarProfesor(p)) {
             cout << "Profesor ingresado." << endl;
+            return;
         }
         else {
             cout << "Error al ingresar." << endl;
+            return;
         }
     }
     else {
        cout << "No se pueden ingresar espacios vacios, intente nuevamente." << endl;
-       submenuAdministracion();
     }
     system("pause");
 }
@@ -238,6 +251,7 @@ void interfaz::ingresarEstudiante() {
 
     cout << "Ingrese el ID del estudiante:\t";
     getline(cin, id);
+    cin.ignore();
     cout << endl;
 
     if (acad->buscarEstudiante(id)) {
@@ -247,15 +261,19 @@ void interfaz::ingresarEstudiante() {
     }
 
     cout << "Ingrese el nombre del estudiante:\t";
+    cin.ignore();
     getline(cin, nombre);
     cout << endl;
     cout << "Ingrese la especialidad del estudiante:\t";
+    cin.ignore();
     getline(cin, especialidad);
     cout << endl;
     cout << "Ingrese el telefono del estudiante:\t";
+    cin.ignore();
     getline(cin, telefono);
     cout << endl;
     cout << "Ingrese el email del estudiante:\t";
+    cin.ignore();
     getline(cin, email);
     cout << endl;
 
@@ -313,6 +331,7 @@ void interfaz::ingresarCurso() {
     bool disponible;
 
     cout << "Ingrese el ID del curso:\t";
+    cin.ignore();
     getline(cin, id);
     cout << endl;
 
@@ -323,6 +342,7 @@ void interfaz::ingresarCurso() {
     }
 
     cout << "Ingrese el nombre del curso:\t";
+    cin.ignore();
     getline(cin, nombre);
     cout << endl;
     cout << "Ingrese la cantidad de horas del curso:\t";
@@ -359,6 +379,7 @@ void interfaz::ingresarGrupo() {
     profesor* prof = nullptr;
 
     cout << "Ingrese el ID del curso para el nuevo grupo:\t";
+    cin.ignore();
     getline(cin, idCurso);
     cout << endl;
 

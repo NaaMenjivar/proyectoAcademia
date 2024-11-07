@@ -6,18 +6,18 @@ academia::academia() {
     estudiantes = (archivos->recuperarEstudiantes()) ? archivos->recuperarEstudiantes() : new listaEstudiante();
     cursos = (archivos->recuperarCursos()) ? archivos->recuperarCursos() : new listaCurso();
     grupos = (archivos->recuperarGrupos()) ? archivos->recuperarGrupos() : new listaGrupo();
-    profesores = (archivos->recuperarProfesores()) ? archivos->recuperarProfesores() : new listaProfesor();
+    profesores = (archivos->recuperarProfesores()) ? archivos->recuperarProfesores() : new listaProfesor(); 
     periodos = (archivos->recuperarPeriodos()) ? archivos->recuperarPeriodos() : new listaPeriodo(); 
 
 }
 
 // Destructor
 academia::~academia() {
-    archivos->guardarEstudiantes(estudiantes);
-    archivos->guardarProfesores(profesores);
+    /*archivos->guardarEstudiantes(estudiantes);
+    archivos->guardarProfesores(profesores); 
     archivos->guardarGrupos(grupos);
     archivos->guardarCursos(cursos);
-    archivos->guardarPeriodos(periodos);
+    archivos->guardarPeriodos(periodos);*/
     delete cursos;
     delete grupos;
     delete estudiantes;
@@ -250,4 +250,14 @@ string academia::informeGrupoEspecifico(string idCurso, int numGrupo) {
     grupo* g = c->getGrupos()->buscarPorNumGrupo(numGrupo) ? c->getGrupos()->getGrupo(numGrupo) : nullptr;
     return g ? g->toString() : "Grupo no encontrado.";
 }
+
+void academia::guardarDatos() {
+    archivos->guardarEstudiantes(estudiantes); 
+    archivos->guardarProfesores(profesores); 
+    archivos->guardarGrupos(grupos); 
+    archivos->guardarCursos(cursos);
+    archivos->guardarPeriodos(periodos); 
+}
+
+
 

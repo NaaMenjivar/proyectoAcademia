@@ -13,6 +13,7 @@ void archivo::guardarEstudiantes(listaEstudiante* lis) {
 			aux = aux->getSiguiente();
 		}
 	}
+	salida.close();
 }
 
 void archivo::guardarProfesores(listaProfesor* lis) {
@@ -28,6 +29,7 @@ void archivo::guardarProfesores(listaProfesor* lis) {
 			aux = aux->getSiguiente();
 		}
 	}
+	salida.close();
 }
 
 void archivo::guardarGrupos(listaGrupo* lis) {
@@ -201,7 +203,7 @@ listaEstudiante* archivo::recuperarEstudiantes() {
 
 listaProfesor* archivo::recuperarProfesores() { 
 	listaProfesor* listaAux = new listaProfesor(); 
-	entrada.open("Archivos/estudiantesAcademia.txt");
+	entrada.open("Archivos/profesoresAcademia.txt");
 	string id, nombre, telefono, email, gradoAcademico; 
 	profesor* prof = nullptr; 
 

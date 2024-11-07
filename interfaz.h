@@ -10,6 +10,7 @@ private:
 	academia* acad;
 public:
 	interfaz();
+	~interfaz();
 	
 	//Menú Principal
 	void menuPrincipal();
@@ -18,7 +19,6 @@ public:
 	void submenuAdministracion();
 	void submenuMatricula();
 	void submenuInformes();
-	void guardarDatos();
 
 	//Métodos para ingresar
 	void ingresarProfesor();
@@ -39,7 +39,5 @@ public:
 	void mostrarInformeProfesorEspecifico();
 	void mostrarInformePeriodos();
 	void mostrarInformeGrupoEspecifico();
-
-	//Métodos para guardar datos
 
 };
