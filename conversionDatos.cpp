@@ -43,17 +43,22 @@ string conversionDatos::convBool(bool v) {
 
 //Conversión de horario
 horario* conversionDatos::conversionHorario(string s_) {
-    int datosInt = conversionInt(s_);
+    if (s_.size() < 9) { 
+        cout << "Error: longitud de la cadena insuficiente para extraer diasSemana." << endl; 
+        return nullptr;
+    }
 
-    // Extraer horas y minutos
-    int horaInicioInt = datosInt / 1000000;
-    int horaFinInt = (datosInt / 10000) % 10000;
+    int datosInt = conversionInt(s_); 
 
-    string horaInicio = convInt(horaInicioInt / 100) + ":" + (horaInicioInt % 100 < 10 ? "0" : "") + convInt(horaInicioInt % 100);
-    string horaFin = convInt(horaFinInt / 100) + ":" + (horaFinInt % 100 < 10 ? "0" : "") + convInt(horaFinInt % 100);
+    int horaInicioInt = datosInt / 1000000; 
+    int horaFinInt = (datosInt / 10000) % 10000; 
 
-    string diasSemana = s_.substr(8);
+    string horaInicio = convInt(horaInicioInt / 100) + ":" + (horaInicioInt % 100 < 10 ? "0" : "") + convInt(horaInicioInt % 100); 
+    string horaFin = convInt(horaFinInt / 100) + ":" + (horaFinInt % 100 < 10 ? "0" : "") + convInt(horaFinInt % 100); 
 
-    return new horario(horaInicio, horaFin, diasSemana);
+    string diasSemana = s_.substr(8); 
+
+    return new horario(horaInicio, horaFin, diasSemana); 
 }
+
 

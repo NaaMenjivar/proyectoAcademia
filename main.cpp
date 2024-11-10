@@ -1,18 +1,24 @@
 #include <iostream>
-#include <sstream>
+#include <fstream>
 #include <string>
 #include "academia.h"
 #include "interfaz.h"
+#include "archivo.h"
 using namespace std;
 
 int main() {
 	academia acad;
-	interfaz interfaz;
+	interfaz inter;
 
-	interfaz.menuPrincipal();
+	inter.menuPrincipal();
 
 	return 0;
 }
+
+
+
+
+
 
 
 

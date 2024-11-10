@@ -72,5 +72,5 @@ public:
     string informeGrupoEspecifico(string idCurso, int numGrupo);
 
     // Persistencia de datos
-    void guardarDatos();
+    void guardarDatos();  
 };

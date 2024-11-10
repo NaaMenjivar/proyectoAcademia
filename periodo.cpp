@@ -102,7 +102,7 @@ int periodo::contarCursosMatriculadosEstudiante(string idEstudiante) {
 string periodo::toString() {
     stringstream s;
     s << "Nombre del periodo: " << nombre << " (" << mesInicio << " - " << mesFin << ")" << endl;
-    s << "Cursos disponibles:\n" << cursos->toString() << endl;
-    s << "Grupos disponibles:\n" << grupos->toString() << endl;
+    s << "Cursos disponibles:\t\t" << cursos->toString() << endl;
+    s << "Grupos disponibles:\t\t" << grupos->toString() << endl;
     return s.str();
 }

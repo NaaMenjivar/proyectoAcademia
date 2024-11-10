@@ -1,7 +1,7 @@
 #include "archivo.h"
 
 void archivo::guardarEstudiantes(listaEstudiante* lis) {
-	salida.open("Archivos/estudiantesAcademia.txt");
+	salida.open("Archivos/estudiantesAcademia.txt", ios::out);
 	if (salida.good()) {
 		nodoEstudiante* aux = lis->getPrimero();
 		while (aux) {
@@ -36,7 +36,7 @@ void archivo::guardarGrupos(listaGrupo* lis) {
 	salida.open("Archivos/gruposAcademia.txt");
 	salidaAux.open("Archivos/estudiantesGrupo.txt");
 
-	if (salidaAux.good() && salidaAux.good()) {
+	if (salida.good() && salidaAux.good()) {
 		nodoGrupo* aux = lis->getPrimero(); 
 		while (aux) {
 			grupo* grupoActual = aux->getGrupo();
@@ -113,7 +113,7 @@ void archivo::guardarEstudiantesGrupo(listaEstudiante* lis, int numeroGrupo) {
 		nodoEstudiante* aux = lis->getPrimero();
 		while (aux) {
 			salidaAux << numeroGrupo << "\t";
-			salidaAux << aux->getEstudiante()->getId() << "\t";
+			salidaAux << aux->getEstudiante()->getId() << "\t"; 
 			salidaAux << aux->getEstudiante()->getNombre() << "\t";
 			salidaAux << aux->getEstudiante()->getTelefono() << "\t";
 			salidaAux << aux->getEstudiante()->getEmail() << "\t";

@@ -24,10 +24,10 @@ void factura::calcularTotal(float total) { this->total = total; }
 //toString
 string factura::toString() {
     stringstream s;
-    s << "Factura:\n" << endl; 
-    s << "Subtotal:\n" << subtotal << endl; 
-    s << "Descuento aplicado:\n" << desc->calcularDescuento(subtotal, cantCursos) << endl;
-    s << "IVA:\n" << iva << "%" << endl;
-    s << "Total a pagar:\n" << total << endl;
+    s << "Factura:\t\t" << endl; 
+    s << "Subtotal:\t\t" << subtotal << endl; 
+    s << "Descuento aplicado:\t\t" << desc->calcularDescuento(subtotal, cantCursos) << endl;
+    s << "IVA:\t\t" << iva << "%" << endl;
+    s << "Total a pagar:\t\t" << total << endl;
     return s.str();
 }

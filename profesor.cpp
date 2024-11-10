@@ -3,7 +3,7 @@
 //Constructor y Destructor
 profesor::profesor(string n, string i, string t, string e, string g) : 
     nombre(n), id(i), telefono(t), email(e), gradoAcademico(g) {}
-
+profesor::profesor() : nombre(" "), id(" "), telefono(" "), email(" "), gradoAcademico(" ") {}
 profesor::~profesor(){}
 
 //Métodos Get
@@ -23,11 +23,11 @@ void profesor::setGradoAcademico(string g) { gradoAcademico = g; }
 //toString
 string profesor::toString() {
     stringstream k;
-    k << "Nombre:\n" << nombre << endl;
-    k << "ID:\n" << id << endl;
-    k << "Telefono:\n" << telefono << endl;
-    k << "Email:\n" << email << endl;
-    k << "Grado academico:\n" << gradoAcademico << endl;
+    k << "Nombre:\t\t" << nombre << endl;
+    k << "ID:\t\t" << id << endl;
+    k << "Telefono:\t\t" << telefono << endl;
+    k << "Email:\t\t" << email << endl;
+    k << "Grado academico:\t\t" << gradoAcademico << endl;
 
     return k.str();
 }

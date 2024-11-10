@@ -14,6 +14,7 @@ private:
 
 public:
     profesor(string, string, string, string, string);
+    profesor();
     ~profesor();
 
     string getNombre();

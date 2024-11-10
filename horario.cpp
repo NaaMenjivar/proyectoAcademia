@@ -17,10 +17,10 @@ void horario::setDiasSemana(string d) { diasSemana = d; }
 //toString
 string horario::toString() {
     stringstream s;
-    s << "Horario:\n" << endl;;
-    s << "Inicio:\n" << horaInicio << endl;
-    s << "Fin:\n" << horaFin << endl;
-    s << "Días:\n" << diasSemana << endl;
+    s << "------ Horario ------\n" << endl;;
+    s << "Inicio:\t\t" << horaInicio << endl;
+    s << "Fin:\t\t" << horaFin << endl;
+    s << "Días:\t\t" << diasSemana << endl;
     
     return s.str();
 }

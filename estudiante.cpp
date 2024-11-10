@@ -23,11 +23,11 @@ void estudiante::setEmail(string e) { email = e; }
 //toString
 string estudiante::toString() {
     stringstream r;
-    r << "Nombre:\n" << nombre << endl;
-    r << "ID:\n" << id << endl;
-    r << "Especialidad o carrera:\n" << especialidad << endl;
-    r << "Telefono:\n" << telefono << endl;
-    r << "Email:\n" << email << endl;
+    r << "Nombre:\t\t" << nombre << endl;
+    r << "ID:\t\t" << id << endl;
+    r << "Especialidad o carrera:\t\t" << especialidad << endl;
+    r << "Telefono:\t\t" << telefono << endl;
+    r << "Email:\t\t" << email << endl;
     
     return r.str();
 }

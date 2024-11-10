@@ -18,6 +18,11 @@ academia::~academia() {
     archivos->guardarGrupos(grupos);
     archivos->guardarCursos(cursos);
     archivos->guardarPeriodos(periodos);*/
+    cursos->vaciar();
+    grupos->vaciar();
+    estudiantes->vaciarLista();
+    profesores->vaciarLista();
+    periodos->vaciarLista();
     delete cursos;
     delete grupos;
     delete estudiantes;
@@ -70,7 +75,9 @@ string academia::listarCursos() {
 
 bool academia::agregarGrupo(grupo* g, int numPeriodo) {
     periodo* p = periodos->buscarPorNumPeriodo(numPeriodo) ? periodos->getPeriodo(numPeriodo) : nullptr;
-    if (p) return p->getGrupos()->insertarFinal(g);
+    if (p) {
+        return p->getGrupos()->insertarFinal(g) && grupos->insertarPrimero(g);
+    }
     return false;
 }
 
@@ -309,16 +316,48 @@ string academia::informeGrupoEspecifico(string idCurso, int numGrupo) {
     if (!c) {
         return "Curso no encontrado.";
     }
+
     grupo* g = c->getGrupos()->buscarPorNumGrupo(numGrupo) ? c->getGrupos()->getGrupo(numGrupo) : nullptr;
-    return g ? g->toString() : "Grupo no encontrado.";
+    if (!g) {
+        return "Grupo no encontrado.";
+    }
+
+    stringstream informe;
+    informe << "----- Detalle del Grupo -----\n";
+    informe << "Nombre del Curso: " << c->getNombre() << "\n"; 
+    informe << "Numero de Grupo: " << g->getNumeroGrupo() << "\n"; 
+    informe << "Capacidad del Grupo: " << g->getCapacidad() << "\n"; 
+    informe << "Horario: " << g->getHorario()->toString() << "\n"; 
+
+    if (g->getProfesor()) {
+        informe << "Profesor a Cargo: " << g->getProfesor()->getNombre() << " (ID: " << g->getProfesor()->getId() << ")\n";
+    }
+    else {
+        informe << "Profesor a Cargo: No asignado\n";
+    }
+
+    listaEstudiante* estudiantes = g->getEstudiantes();
+    if (estudiantes && !estudiantes->esVacia()) {
+        informe << "Estudiantes Matriculados:\n";
+        nodoEstudiante* actual = estudiantes->getPrimero();
+        while (actual) {
+            informe << "- " << actual->getEstudiante()->toString() << "\n";
+            actual = actual->getSiguiente();
+        }
+    }
+    else {
+        informe << "Estudiantes Matriculados: Ninguno\n";
+    }
+
+    return informe.str();
 }
 
 void academia::guardarDatos() {
-    archivos->guardarEstudiantes(estudiantes); 
-    archivos->guardarProfesores(profesores); 
-    archivos->guardarGrupos(grupos); 
+    archivos->guardarEstudiantes(estudiantes);
+    archivos->guardarProfesores(profesores);
+    archivos->guardarGrupos(grupos);
     archivos->guardarCursos(cursos);
-    archivos->guardarPeriodos(periodos); 
+    archivos->guardarPeriodos(periodos);  
 }
 
 

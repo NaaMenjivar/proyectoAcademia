@@ -38,11 +38,11 @@ bool curso::buscarGrupo(int num) {
 
 string curso::toString() {
     stringstream s;
-    s << "Nombre:\n" << nombre << endl;
-    s << "ID:\n" << id << endl;
-    s << "Horas:\n" << horas << endl;
-    s << "Precio:\n" << precio << endl;
-    s << "Disponibilidad:\n" << disponible << endl;
-    s << "Grupos:\n" << grupos->toString() << endl;
+    s << "Nombre:\t\t" << nombre << endl;
+    s << "ID:\t\t" << id << endl;
+    s << "Horas:\t\t" << horas << endl;
+    s << "Precio:\t\t" << precio << endl;
+    s << "Disponibilidad:\t\t" << disponible << endl;
+    s << "Grupos:\t\t" << grupos->toString() << endl; 
     return s.str();
 }

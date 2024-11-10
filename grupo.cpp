@@ -45,11 +45,11 @@ bool grupo::buscarEstudiante(string id) {
 //toString
 string grupo::toString() {
     stringstream s;
-    s << "Numero de grupo:\n" << numeroGrupo << endl;
-    s << "Capacidad:\n" << capacidad << endl;
-    s << "Cantidad de alumnos:\n" << cantidadAlumnos << endl;
-    s << "Horario del grupo:\n" << h->toString() << endl;
-    s << "Profesor asignado:\n" << p->toString() << endl;
-    s << "Lista de estudiantes:\n" << estudiantes->toString() << endl;
+    s << "Numero de grupo:\t\t" << numeroGrupo << endl;
+    s << "Capacidad:\t\t" << capacidad << endl;
+    s << "Cantidad de alumnos:\t\t" << cantidadAlumnos << endl;
+    s << "Horario del grupo:\t\t" << h->toString() << endl;
+    s << "Profesor asignado:\t\t" << p->toString() << endl;
+    s << "Lista de estudiantes:\t\t" << estudiantes->toString() << endl;
     return s.str();
 }

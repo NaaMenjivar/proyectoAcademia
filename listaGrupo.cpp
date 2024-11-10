@@ -2,7 +2,7 @@
 
 listaGrupo::listaGrupo() : actual(nullptr), primero(nullptr) {}
 listaGrupo::~listaGrupo() {
-    if (!vacia()) {
+    if (primero != nullptr) {
         vaciar();
     }
 }
@@ -12,7 +12,7 @@ bool listaGrupo::vacia() {
 }
 
 void listaGrupo::vaciar() {
-    if (!vacia()) {
+    if (primero != nullptr) {
         actual = primero;
         primero = primero->getSig();
         delete actual;
@@ -45,7 +45,7 @@ bool listaGrupo::insertarFinal(grupo* g) {
 }
 
 bool listaGrupo::buscarPorNumGrupo(int num) {
-    if (vacia()) {
+    if (primero == nullptr) {
         return false;
     }
     actual = primero;
@@ -98,7 +98,7 @@ nodoGrupo* listaGrupo::getSig(nodoGrupo* nodo) {
 string listaGrupo::toString() {
     stringstream s;
     int t = 1;
-    if (vacia()) {
+    if (primero == nullptr) {
         s << "No hay informacion que mostrar, la lista esta vacia." << endl;
     }
     else {

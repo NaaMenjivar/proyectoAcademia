@@ -2,7 +2,7 @@
 
 //Constructor
 interfaz::interfaz() {
-	acad = new academia();
+    acad = new academia;
 }
 
 //Destructor
@@ -149,7 +149,7 @@ void interfaz::submenuInformes() {
         cout << "(2) Informe Estudiantes Registrados\n";
         cout << "(3) Informe Cursos Matriculados por un Estudiante\n";
         cout << "(4) Informe Profesor Especifico\n";
-        cout << "(5) Informe Periodos Habilitados para el Año\n";
+        cout << "(5) Informe Periodos Habilitados para el Annio\n";
         cout << "(6) Informe Grupo Especifico\n";
         cout << "(0) Regresar al Menu Principal\n";
         cout << "Seleccione una opcion: ";
@@ -359,13 +359,12 @@ void interfaz::ingresarGrupo() {
     string idCurso;
     int numGrupo, capacidad, numPeriodo;
     string horarioInicio, horarioFin, diasSemana;
-    profesor* prof = nullptr;
+    profesor* p = new profesor();
 
     cout << acad->listarCursos();
     cout << "Ingrese el ID del curso para el nuevo grupo:\t";
     cin.ignore();
     getline(cin, idCurso);
-    cout << endl;
 
     if (!acad->buscarCurso(idCurso)) {
         cout << "Error: El curso no existe.\n";
@@ -374,65 +373,49 @@ void interfaz::ingresarGrupo() {
     }
     curso* c = acad->getCursos()->getCurso(idCurso);
 
+    system("cls");
     cout << "Ingrese el numero del grupo:\t";
     cin >> numGrupo;
-    cout << endl;
-
     cout << "Ingrese la capacidad del grupo:\t";
     cin >> capacidad;
-    cout << endl;
 
     if (numGrupo <= 0 || capacidad <= 0) {
-        cout << "Error: El numero de grupo y capacidad deben ser mayores que cero.\n";
+        cout << "Error: El numero de grupo y la capacidad deben ser mayores que cero.\n";
         system("pause");
         return;
     }
 
     system("cls");
     cout << "------- Informacion del Horario -------\n";
-    cout << "Ingrese el horario de inicio (HH:MM):\t";
+    cout << "Ingrese el horario de inicio (HHMM):\t";
     cin >> horarioInicio;
-    cout << endl;
-
-    cout << "Ingrese el horario de fin (HH:MM):\t";
+    cout << "Ingrese el horario de fin (HHMM):\t";
     cin >> horarioFin;
-    cout << endl;
-
-    cout << "Ingrese los dias de la semana del grupo (Ej: Lunes, Miercoles):\t";
+    cout << "Ingrese los dias de la semana (LunMie):\t";
     cin.ignore();
     getline(cin, diasSemana);
-    cout << endl;
-
-    if (horarioInicio.empty() || horarioFin.empty() || diasSemana.empty()) {
-        cout << "Error: El horario y los dias de la semana no pueden estar vacios.\n";
-        system("pause");
-        return;
-    }
 
     horario* h = new horario(horarioInicio, horarioFin, diasSemana);
-
-    grupo* g = new grupo(numGrupo, capacidad, 0, h, prof);
+    grupo* g = new grupo(numGrupo, capacidad, 0, h, p); 
 
     system("cls");
-    cout << acad->listarPeriodos() << endl;
-    cout << "Ingrese el numero de periodo al que desea agregar el grupo (1-4):\t";
+    cout << acad->listarPeriodos();
+    cout << "Ingrese el numero de periodo (1-4): ";
     cin >> numPeriodo;
-    cout << endl;
 
     if (!acad->buscarPeriodo(numPeriodo)) {
-        cout << "Error: El periodo ingresado no existe, intente nuevamente.\n";
+        cout << "Error: Periodo no encontrado.\n";
         delete g;
         system("pause");
         return;
     }
 
-    if (c->agregarGrupo(g) && acad->getPeriodos()->getPeriodo(numPeriodo)->agregarGrupo(g)) {
-        system("cls");
-        cout << "Grupo ingresado y agregado al periodo " << numPeriodo << " con exito.\n";
+    if (c->agregarGrupo(g) && acad->agregarGrupo(g, numPeriodo)) { 
+        cout << "Grupo agregado correctamente al curso y al periodo.\n";
     }
     else {
-        cout << "Error al ingresar el grupo o al asignarlo al periodo.\n";
-        delete g; 
+        cout << "Error al agregar el grupo al curso o al periodo.\n";
+        delete g;
     }
 
     system("pause");
@@ -445,8 +428,7 @@ void interfaz::asignarProfesorAGrupo() {
     int numGrupo;
 
     cout << acad->listarCursos();
-    cout << "Ingrese el ID para el curso del grupo correspondiente:\t";
-    getline(cin, idCurso);
+    cout << "Ingrese el ID para el curso del grupo correspondiente:\t"; cin >> idCurso; 
     cout << endl; 
 
     if (!acad->buscarCurso(idCurso)) {
@@ -454,7 +436,12 @@ void interfaz::asignarProfesorAGrupo() {
         system("pause");
         return;
     }
-    
+    if (acad->getGrupos()->vacia()) {
+        cout << "No hay grupos disponibles en este curso. No se puede asignar un profesor.\n";
+        system("pause");
+        return;
+    }
+
     cout << acad->getCursos()->getCurso(idCurso)->getGrupos()->toString();
     cout << "Ingrese el numero de grupo deseado:\t";
     cin >> numGrupo; 
@@ -465,11 +452,16 @@ void interfaz::asignarProfesorAGrupo() {
         system("pause");
         submenuAdministracion();
     }
+    if (!acad->buscarGrupo(numGrupo)) {
+        cout << "El grupo no existe, intente de nuevo." << endl;
+        system("pause");
+        return;
+    }
+
     grupo* g = acad->getCursos()->getCurso(idCurso)->getGrupos()->getGrupo(numGrupo);
 
     cout << acad->listarProfesores();
-    cout << "Ingrese el ID del profesor que desea asignar:\t";
-    getline(cin, idProfesor);
+    cout << "Ingrese el ID del profesor que desea asignar:\t"; cin >> idProfesor; 
     cout << endl; 
     if (!acad->buscarProfesor(idProfesor)) {
         cout << "Error: El profesor ingresado no esta registrado en el sistema.\n";
@@ -517,6 +509,12 @@ void interfaz::matricularEstudiante() {
     cout << "Ingrese el ID del curso en el que desea matricular al estudiante: "; cin >> idCurso; 
     if (!acad->buscarCurso(idCurso)) {
         cout << "Error: El curso ingresado no esta registrado en el sistema.\n";
+        system("pause");
+        return;
+    }
+
+    if (acad->getCursos()->getCurso(idCurso)->getGrupos()->vacia()) {
+        cout << "No hay grupos disponibles en este curso. No se puede matricular un estudiante.\n";
         system("pause");
         return;
     }
@@ -582,6 +580,12 @@ void interfaz::desmatricularEstudiante() {
         return;
     }
 
+    if (acad->getCursos()->getCurso(idCurso)->getGrupos()->vacia()) {
+        cout << "No hay grupos disponibles en este curso. No se puede desmatricular un estudiante.\n";
+        system("pause");
+        return;
+    }
+
     cout << acad->getCursos()->getCurso(idCurso)->getGrupos()->toString();
     cout << "Ingrese el numero de grupo del que desea desmatricular al estudiante: ";
     cin >> numGrupo;
@@ -632,6 +636,7 @@ void interfaz::mostrarInformeCursosEstudiante() {
     string idEstudiante; 
     cout << "Lista Estudiantes:\n" << acad->listarEstudiantes() << endl;
     cout << "Ingrese el ID del estudiante: "; cin >> idEstudiante; 
+    system("cls");
 
     cout << "----- Informe de Cursos Matriculados por el Estudiante -----\n";
     string informe = acad->informeCursosMatriculadosEstudiante(idEstudiante); 
@@ -649,6 +654,7 @@ void interfaz::mostrarInformeProfesorEspecifico() {
     string idProfesor; 
     cout << "Lista Profesores:\n" << acad->listarProfesores() << endl;
     cout << "Ingrese el ID del profesor: "; cin >> idProfesor;
+    system("cls");
 
     cout << "----- Informe del Profesor Especifico -----\n";
     string informe = acad->informeProfesorEspecifico(idProfesor); 
@@ -679,12 +685,27 @@ void interfaz::mostrarInformeGrupoEspecifico() {
     string idCurso;  
     int numGrupo;
 
-    cout << "Ingrese el ID del curso: ";
-    getline(cin, idCurso);
+    if (acad->getCursos()->vacia()) {
+        cout << "No se pueden mostrar grupos sin cursos disponibles.\n";
+        system("pause");
+        return;
+    }
 
-    cout << "Ingrese el número de grupo: ";
+    cout << acad->listarCursos();
+    cout << "Ingrese el ID del curso: "; 
+    cin >> idCurso; 
+
+    if (acad->getCursos()->getCurso(idCurso)->getGrupos()->vacia()) {
+        cout << "No hay grupos disponibles en este curso.\n";
+        system("pause");
+        return;
+    }
+
+    cout << acad->getCursos()->getCurso(idCurso)->getGrupos()->toString();
+    cout << "Ingrese el numero de grupo: ";
     cin >> numGrupo; 
-   
+    system("cls");
+
     cout << "----- Informe del Grupo Especifico -----\n";
     string informe = acad->informeGrupoEspecifico(idCurso, numGrupo); 
     if (informe == "Curso no encontrado." || informe == "Grupo no encontrado.") { 
