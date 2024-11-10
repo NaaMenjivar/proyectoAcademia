@@ -144,12 +144,12 @@ void archivo::guardarGruposCurso(listaGrupo* lis, string idCurso) {
 	}
 }
 
-void archivo::guardarGruposPeriodo(listaGrupo* lis, int numTrmiestre) {
+void archivo::guardarGruposPeriodo(listaGrupo* lis, int numTrimestre) {
 	if (salida.good()) { 
 		nodoGrupo* aux = lis->getPrimero();  
 		while (aux) {
 			grupo* grupoActual = aux->getGrupo();   
-			salidaAux2 << numTrmiestre << "\t"; 
+			salidaAux2 << numTrimestre << "\t"; 
 			salidaAux2 << grupoActual->getNumeroGrupo() << "\t"; 
 			salidaAux2 << grupoActual->getProfesor()->getId() << "\t"; 
 			salidaAux2 << grupoActual->getProfesor()->getNombre() << "\t"; 

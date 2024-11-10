@@ -230,13 +230,75 @@ string academia::informeEstudiantes() {
 
 string academia::informeCursosMatriculadosEstudiante(string idEstudiante) {
     estudiante* e = estudiantes->buscarPorId(idEstudiante) ? estudiantes->getEstudiante(idEstudiante) : nullptr;
-    return e ? e->toString() : "Estudiante no encontrado.";
+    if (!e) {
+        return "Estudiante no encontrado.";
+    }
+
+    stringstream ss;
+    ss << "Cursos matriculados para " << e->getNombre() << " (ID: " << e->getId() << "):\n"; 
+    bool cursosEncontrados = false;
+
+    for (nodoCurso* nodoCursoActual = cursos->getPrimero(); nodoCursoActual != nullptr; nodoCursoActual = nodoCursoActual->getSig()) {
+        curso* cursoActual = nodoCursoActual->getCurso();
+        for (nodoGrupo* nodoGrupoActual = cursoActual->getGrupos()->getPrimero(); nodoGrupoActual != nullptr; nodoGrupoActual = nodoGrupoActual->getSig()) {
+            grupo* grupoActual = nodoGrupoActual->getGrupo(); 
+
+            if (grupoActual->buscarEstudiante(idEstudiante)) {
+                cursosEncontrados = true; 
+                ss << "- Curso: " << cursoActual->getNombre() << " (ID: " << cursoActual->getId() << ")\n"; 
+                ss << "  Grupo: " << grupoActual->getNumeroGrupo() << "\n"; 
+                ss << "  Horario: " << grupoActual->getHorario()->toString() << "\n\n"; 
+            }
+        }
+    }
+
+    if (!cursosEncontrados) { 
+        ss << "No se encontraron cursos matriculados para este estudiante.\n";
+    }
+
+    return ss.str();
 }
+
 
 string academia::informeProfesorEspecifico(string idProfesor) {
     profesor* p = profesores->buscarPorId(idProfesor) ? profesores->getProfesor(idProfesor) : nullptr;
-    return p ? p->toString() : "Profesor no encontrado.";
+    if (!p) {
+        return "Profesor no encontrado.";
+    }
+
+    stringstream ss;
+    ss << "Datos del Profesor: \n";
+    ss << p->toString() << "\n\n";
+    ss << "Cursos y grupos impartidos por el profesor:\n";
+
+    bool cursosEncontrados = false;
+
+    for (nodoCurso* nodoCursoActual = cursos->getPrimero(); nodoCursoActual != nullptr; nodoCursoActual = nodoCursoActual->getSig()) { 
+        curso* cursoActual = nodoCursoActual->getCurso();
+        bool gruposImpartidos = false;
+        for (nodoGrupo* nodoGrupoActual = cursoActual->getGrupos()->getPrimero(); nodoGrupoActual != nullptr; nodoGrupoActual = nodoGrupoActual->getSig()) {
+            grupo* grupoActual = nodoGrupoActual->getGrupo();
+
+            if (grupoActual->getProfesor()->getId() == idProfesor) {
+                if (!gruposImpartidos) {
+                    ss << "- Curso: " << cursoActual->getNombre() << " (ID: " << cursoActual->getId() << ")\n";
+                    gruposImpartidos = true;
+                    cursosEncontrados = true;
+                }
+                ss << "  Grupo: " << grupoActual->getNumeroGrupo() << "\n";
+                ss << "  Horario: " << grupoActual->getHorario()->toString() << "\n";
+                ss << "  Capacidad: " << grupoActual->getCapacidad() << "\n";
+            }
+        }
+    }
+
+    if (!cursosEncontrados) {
+        ss << "No se encontraron cursos ni grupos impartidos por este profesor.\n";
+    }
+
+    return ss.str();
 }
+
 
 string academia::informePeriodos() {
     return periodos->toString();

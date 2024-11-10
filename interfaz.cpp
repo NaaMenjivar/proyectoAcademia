@@ -24,7 +24,7 @@ void interfaz::menuPrincipal() {
         cout << "4. Salir\n";
         cout << "Seleccione una opcion: ";
         cin >> opcion; 
-        cin.ignore();
+        cin.ignore(); 
 
         switch (opcion) { 
         case 1:
@@ -96,7 +96,6 @@ void interfaz::submenuAdministracion() {
         case 0:
             system("cls");
             cout << "Regresando al menu principal.\n";
-            menuPrincipal();
             break;
         default:
             cout << "Opcion invalida. Por favor intente nuevamente.\n";
@@ -130,7 +129,6 @@ void interfaz::submenuMatricula() {
         case 0:
             system("cls");
             cout << "Regresando al menu principal.\n";
-            menuPrincipal();
             break;
         default:
             cout << "Opcion invalida. Por favor intente nuevamente.\n";
@@ -185,7 +183,6 @@ void interfaz::submenuInformes() {
         case 0:
             system("cls");
             cout << "Regresando al menu principal.\n";
-            menuPrincipal();
             break;
         default:
             cout << "Opcion invalida. Por favor intente nuevamente.\n";
@@ -197,98 +194,70 @@ void interfaz::submenuInformes() {
 //Métodos de ingreso
 void interfaz::ingresarProfesor() {
     system("cls");
-    string nombre, id, telefono, email, gradoAcademico;
+    string nombre, id, tel, email, grado;
     profesor* p = nullptr;
 
-    cout << "Ingrese el ID del profesor:\t"; 
-    getline(cin, id);
-    cin.ignore();
-    cout << endl;
+    cout << "Ingrese ID: "; cin >> id;
 
     if (acad->buscarProfesor(id)) {
-        cout << "Error: ya existe un profesor con ese ID.\n";
+        cout << "Ya existe.\t" << endl;
         system("pause");
         return;
     }
 
-    cout << "Ingrese el nombre del profesor:\t"; 
-    getline(cin, nombre);
-    cin.ignore();
-    cout << endl;
-    cout << "Ingrese el telefono del profesor:\t";
-    getline(cin, telefono);
-    cin.ignore();
-    cout << endl;
-    cout << "Ingrese el email del profesor:\t"; 
-    getline(cin, email);
-    cin.ignore();
-    cout << endl;
-    cout << "Ingrese el grado academico del profesor:\t"; 
-    getline(cin, gradoAcademico);
-    cin.ignore(); 
-    cout << endl;
+    cout << "Ingrese nombre:\t"; cin >> nombre; 
+    cout << "Ingrese telefono:\t"; cin >> tel; 
+    cout << "Ingrese email:\t"; cin >> email; 
+    cout << "Ingrese grado:\t"; cin >> grado;  
 
-    if (!nombre.empty() || !telefono.empty() || !email.empty() || !gradoAcademico.empty()) {
-        p = new profesor(nombre, id, telefono, email, gradoAcademico);
+    if (!nombre.empty() || !id.empty() || !tel.empty() || !email.empty() || !grado.empty()) {
+        p = new profesor(nombre, id, tel, email, grado);
         if (acad->agregarProfesor(p)) {
             cout << "Profesor ingresado." << endl;
-            return;
         }
         else {
             cout << "Error al ingresar." << endl;
-            return;
+            ingresarProfesor();
         }
     }
     else {
-       cout << "No se pueden ingresar espacios vacios, intente nuevamente." << endl;
+        cout << "No se pueden ingresar espacios vacíos, intente nuevamente." << endl;
+        ingresarProfesor();
     }
     system("pause");
 }
 
 void interfaz::ingresarEstudiante() {
     system("cls");
-    string nombre, id, especialidad, telefono, email;
+    string nombre, id, tel, email, espe;
+    estudiante* e = nullptr;
 
-    cout << "Ingrese el ID del estudiante:\t";
-    getline(cin, id);
-    cin.ignore();
-    cout << endl;
+    cout << "Ingrese ID: "; cin >> id;
 
     if (acad->buscarEstudiante(id)) {
-        cout << "Error: ya existe un estudiante con este ID.\n";
+        cout << "Ya existe.\t" << endl;
         system("pause");
         return;
     }
 
-    cout << "Ingrese el nombre del estudiante:\t";
-    cin.ignore();
-    getline(cin, nombre);
-    cout << endl;
-    cout << "Ingrese la especialidad del estudiante:\t";
-    cin.ignore();
-    getline(cin, especialidad);
-    cout << endl;
-    cout << "Ingrese el telefono del estudiante:\t";
-    cin.ignore();
-    getline(cin, telefono);
-    cout << endl;
-    cout << "Ingrese el email del estudiante:\t";
-    cin.ignore();
-    getline(cin, email);
-    cout << endl;
+    cout << "Ingrese nombre:\t"; cin >> nombre;
+    cout << "Ingrese telefono:\t"; cin >> tel;
+    cout << "Ingrese email:\t"; cin >> email;
+    cout << "Ingrese especialidad:\t"; cin >> espe;
 
-    if (!nombre.empty() || !especialidad.empty() || !telefono.empty() || !email.empty()) {
-        estudiante* e = new estudiante(nombre, id, especialidad, telefono, email);
+    if (!nombre.empty() || !id.empty() || !tel.empty() || !email.empty() || !espe.empty()) { 
+        e = new estudiante(nombre, id, tel, email, espe);  
         if (acad->agregarEstudiante(e)) {
             cout << "Estudiante ingresado." << endl;
         }
         else {
             cout << "Error al ingresar." << endl;
+            ingresarEstudiante(); 
         }
     }
     else {
         cout << "No se pueden ingresar espacios vacíos, intente nuevamente." << endl;
-        submenuAdministracion();
+        ingresarEstudiante();
     }
     system("pause");
 }
@@ -326,7 +295,7 @@ void interfaz::ingresarPeriodo() {
 void interfaz::ingresarCurso() {
     system("cls");
     string nombre, id;
-    int horas;
+    int horas, numPeriodo;
     float precio;
     bool disponible;
 
@@ -357,7 +326,21 @@ void interfaz::ingresarCurso() {
 
     if (!nombre.empty() || horas != 0 || precio != 0) {
         curso* c = new curso(nombre, id, horas, precio, disponible);
+        cout << acad->listarPeriodos() << endl; 
+        cout << "Ingrese el numero de periodo al que desea ingresar el curso (1-4):\t";
+        cin >> numPeriodo; 
+
         if (acad->agregarCurso(c)) {
+            if (acad->buscarPeriodo(numPeriodo)) { 
+                if (acad->getPeriodos()->getPeriodo(numPeriodo)->agregarCurso(c)) { 
+                    system("cls");
+                    cout << "Curso agregado al periodo " << numPeriodo << " con exito.\n";
+                }
+            }
+            else {
+                cout << "El periodo ingresado no existe, intente nuevamente." << endl;
+                return;
+            }
             cout << "Curso ingresado." << endl;
         }
         else {
@@ -366,7 +349,7 @@ void interfaz::ingresarCurso() {
     }
     else {
         cout << "No se pueden ingresar espacios vacios, intente nuevamente." << endl;
-        submenuAdministracion();
+        ingresarCurso();
     }
     system("pause");
 }
@@ -374,10 +357,11 @@ void interfaz::ingresarCurso() {
 void interfaz::ingresarGrupo() {
     system("cls");
     string idCurso;
-    int numGrupo, capacidad;
+    int numGrupo, capacidad, numPeriodo;
     string horarioInicio, horarioFin, diasSemana;
     profesor* prof = nullptr;
 
+    cout << acad->listarCursos();
     cout << "Ingrese el ID del curso para el nuevo grupo:\t";
     cin.ignore();
     getline(cin, idCurso);
@@ -393,47 +377,74 @@ void interfaz::ingresarGrupo() {
     cout << "Ingrese el numero del grupo:\t";
     cin >> numGrupo;
     cout << endl;
+
     cout << "Ingrese la capacidad del grupo:\t";
     cin >> capacidad;
     cout << endl;
 
-    cout << "Informacion del horario:\n";
-    cout << "Ingrese el horario de inicio:\t";
-    getline(cin, horarioInicio);
-    cout << endl;
-    cout << "Ingrese el horario de fin:\t";
-    getline(cin, horarioFin);
-    cout << endl;
-    cout << "Ingrese los dias de la semana del grupo:\t";
-    getline(cin, diasSemana);
-    cout << endl; 
-
-    if (!horarioInicio.empty() || !horarioFin.empty() || !diasSemana.empty()) {
-        cout << "Datos del horario ingresados exitosamente." << endl;
+    if (numGrupo <= 0 || capacidad <= 0) {
+        cout << "Error: El numero de grupo y capacidad deben ser mayores que cero.\n";
+        system("pause");
+        return;
     }
-    horario* h = new horario(horarioInicio, horarioFin, diasSemana); 
 
-    if (numGrupo != 0 || capacidad != 0) {
-        grupo* g = new grupo(numGrupo, capacidad, 0, h, prof);
-        if (c->agregarGrupo(g)) {
-            cout << "Grupo ingresado." << endl;
-        }
-        else {
-            cout << "Error al ingresar." << endl; 
-        }
+    system("cls");
+    cout << "------- Informacion del Horario -------\n";
+    cout << "Ingrese el horario de inicio (HH:MM):\t";
+    cin >> horarioInicio;
+    cout << endl;
+
+    cout << "Ingrese el horario de fin (HH:MM):\t";
+    cin >> horarioFin;
+    cout << endl;
+
+    cout << "Ingrese los dias de la semana del grupo (Ej: Lunes, Miercoles):\t";
+    cin.ignore();
+    getline(cin, diasSemana);
+    cout << endl;
+
+    if (horarioInicio.empty() || horarioFin.empty() || diasSemana.empty()) {
+        cout << "Error: El horario y los dias de la semana no pueden estar vacios.\n";
+        system("pause");
+        return;
+    }
+
+    horario* h = new horario(horarioInicio, horarioFin, diasSemana);
+
+    grupo* g = new grupo(numGrupo, capacidad, 0, h, prof);
+
+    system("cls");
+    cout << acad->listarPeriodos() << endl;
+    cout << "Ingrese el numero de periodo al que desea agregar el grupo (1-4):\t";
+    cin >> numPeriodo;
+    cout << endl;
+
+    if (!acad->buscarPeriodo(numPeriodo)) {
+        cout << "Error: El periodo ingresado no existe, intente nuevamente.\n";
+        delete g;
+        system("pause");
+        return;
+    }
+
+    if (c->agregarGrupo(g) && acad->getPeriodos()->getPeriodo(numPeriodo)->agregarGrupo(g)) {
+        system("cls");
+        cout << "Grupo ingresado y agregado al periodo " << numPeriodo << " con exito.\n";
     }
     else {
-        cout << "No se pueden ingresar espacios vacios, intente de nuevo." << endl;
-        submenuAdministracion();
+        cout << "Error al ingresar el grupo o al asignarlo al periodo.\n";
+        delete g; 
     }
+
     system("pause");
 }
+
 
 void interfaz::asignarProfesorAGrupo() {
     system("cls");
     string idProfesor, idCurso;
     int numGrupo;
 
+    cout << acad->listarCursos();
     cout << "Ingrese el ID para el curso del grupo correspondiente:\t";
     getline(cin, idCurso);
     cout << endl; 
@@ -444,6 +455,7 @@ void interfaz::asignarProfesorAGrupo() {
         return;
     }
     
+    cout << acad->getCursos()->getCurso(idCurso)->getGrupos()->toString();
     cout << "Ingrese el numero de grupo deseado:\t";
     cin >> numGrupo; 
     cout << endl;
@@ -455,6 +467,7 @@ void interfaz::asignarProfesorAGrupo() {
     }
     grupo* g = acad->getCursos()->getCurso(idCurso)->getGrupos()->getGrupo(numGrupo);
 
+    cout << acad->listarProfesores();
     cout << "Ingrese el ID del profesor que desea asignar:\t";
     getline(cin, idProfesor);
     cout << endl; 
@@ -492,23 +505,24 @@ void interfaz::matricularEstudiante() {
         return;
     }
 
-    cout << "Ingrese el ID del estudiante que desea matricular: ";
-    getline(cin, idEstudiante);
+    cout << acad->listarEstudiantes();
+    cout << "Ingrese el ID del estudiante que desea matricular: "; cin >> idEstudiante; 
     if (!acad->buscarEstudiante(idEstudiante)) {
-        cout << "Error: El estudiante ingresado no está registrado en el sistema.\n";
+        cout << "Error: El estudiante ingresado no esta registrado en el sistema.\n";
         system("pause");
         return;
     }
 
-    cout << "Ingrese el ID del curso en el que desea matricular al estudiante: ";
-    getline(cin, idCurso); 
+    cout << acad->listarCursos();
+    cout << "Ingrese el ID del curso en el que desea matricular al estudiante: "; cin >> idCurso; 
     if (!acad->buscarCurso(idCurso)) {
-        cout << "Error: El curso ingresado no está registrado en el sistema.\n";
+        cout << "Error: El curso ingresado no esta registrado en el sistema.\n";
         system("pause");
         return;
     }
 
-    cout << "Ingrese el número de periodo: ";
+    cout << acad->listarPeriodos();
+    cout << "Ingrese el numero de periodo: ";
     cin >> numPeriodo;
     if (!acad->buscarPeriodo(numPeriodo)) {
         cout << "Error: El periodo ingresado no está registrado en el sistema.\n";
@@ -516,10 +530,11 @@ void interfaz::matricularEstudiante() {
         return;
     }
 
-    cout << "Ingrese el número de grupo en el que desea matricular al estudiante: ";
+    cout << acad->getCursos()->getCurso(idCurso)->getGrupos()->toString();
+    cout << "Ingrese el numero de grupo en el que desea matricular al estudiante: ";
     cin >> numGrupo;
     if (!acad->buscarGrupo(numGrupo)) {
-        cout << "Error: El grupo ingresado no está registrado en el curso.\n";
+        cout << "Error: El grupo ingresado no esta registrado en el curso.\n";
         system("pause");
         return;
     }
@@ -531,7 +546,7 @@ void interfaz::matricularEstudiante() {
         return;
     }
     if (acad->matricularEstudianteEnCurso(idEstudiante, idCurso, numGrupo)) {
-        cout << "Matrícula realizada con éxito.\n";
+        cout << "Matricula realizada con exito.\n";
         cout << "Factura generada:\n" << acad->generarFactura(idEstudiante, numPeriodo);
     }
     else {
@@ -551,26 +566,27 @@ void interfaz::desmatricularEstudiante() {
         return;
     }
 
-    cout << "Ingrese el ID del estudiante que desea desmatricular: ";
-    getline(cin, idEstudiante);
+    cout << acad->listarEstudiantes();
+    cout << "Ingrese el ID del estudiante que desea desmatricular: "; cin >> idEstudiante; 
     if (!acad->buscarEstudiante(idEstudiante)) { 
-        cout << "Error: El estudiante ingresado no está registrado en el sistema.\n";
+        cout << "Error: El estudiante ingresado no esta registrado en el sistema.\n";
         system("pause");
         return;
     }
 
-    cout << "Ingrese el ID del curso del que desea desmatricular al estudiante: ";
-    getline(cin, idCurso);
+    cout << acad->listarCursos();
+    cout << "Ingrese el ID del curso del que desea desmatricular al estudiante: "; cin >> idCurso; 
     if (!acad->buscarCurso(idCurso)) { 
-        cout << "Error: El curso ingresado no está registrado en el sistema.\n";
+        cout << "Error: El curso ingresado no esta registrado en el sistema.\n";
         system("pause");
         return;
     }
 
-    cout << "Ingrese el número de grupo del que desea desmatricular al estudiante: ";
+    cout << acad->getCursos()->getCurso(idCurso)->getGrupos()->toString();
+    cout << "Ingrese el numero de grupo del que desea desmatricular al estudiante: ";
     cin >> numGrupo;
     if (!acad->buscarGrupo(numGrupo)) {
-        cout << "Error: El grupo ingresado no está registrado en el curso.\n";
+        cout << "Error: El grupo ingresado no esta registrado en el curso.\n";
         system("pause");
         return;
     }
@@ -593,7 +609,6 @@ void interfaz::mostrarInformeProfesores() {
         cout << "No hay profesores registrados en el sistema.\n";
     }
     else {
-        cout << "Nombre\tID\n";
         cout << informe << endl; 
     }
     system("pause");
@@ -607,7 +622,6 @@ void interfaz::mostrarInformeEstudiantes() {
         cout << "No hay estudiantes registrados en el sistema.\n";
     }
     else {
-        cout << "Nombre\tID\n";
         cout << informe << endl; 
     }
     system("pause");
@@ -616,13 +630,13 @@ void interfaz::mostrarInformeEstudiantes() {
 void interfaz::mostrarInformeCursosEstudiante() {
     system("cls");
     string idEstudiante; 
-    cout << "Ingrese el ID del estudiante: ";
-    getline(cin, idEstudiante);
+    cout << "Lista Estudiantes:\n" << acad->listarEstudiantes() << endl;
+    cout << "Ingrese el ID del estudiante: "; cin >> idEstudiante; 
 
     cout << "----- Informe de Cursos Matriculados por el Estudiante -----\n";
     string informe = acad->informeCursosMatriculadosEstudiante(idEstudiante); 
     if (informe == "Estudiante no encontrado.") { 
-        cout << "Error: El estudiante con ID " << idEstudiante << " no está registrado en el sistema.\n"; 
+        cout << "Error: El estudiante con ID " << idEstudiante << " no esta registrado en el sistema.\n"; 
     }
     else {
         cout << informe << endl; 
@@ -633,13 +647,13 @@ void interfaz::mostrarInformeCursosEstudiante() {
 void interfaz::mostrarInformeProfesorEspecifico() {
     system("cls");
     string idProfesor; 
-    cout << "Ingrese el ID del profesor: ";
-    getline(cin, idProfesor);
+    cout << "Lista Profesores:\n" << acad->listarProfesores() << endl;
+    cout << "Ingrese el ID del profesor: "; cin >> idProfesor;
 
-    cout << "----- Informe del Profesor Específico -----\n";
+    cout << "----- Informe del Profesor Especifico -----\n";
     string informe = acad->informeProfesorEspecifico(idProfesor); 
     if (informe == "Profesor no encontrado.") { 
-        cout << "Error: El profesor con ID " << idProfesor << " no está registrado en el sistema.\n"; 
+        cout << "Error: El profesor con ID " << idProfesor << " no esta registrado en el sistema.\n"; 
     }
     else {
         cout << informe << endl; 
@@ -649,7 +663,7 @@ void interfaz::mostrarInformeProfesorEspecifico() {
 
 void interfaz::mostrarInformePeriodos() {
     system("cls");
-    cout << "----- Informe de Periodos Habilitados para el Año -----\n";
+    cout << "----- Informe de Periodos Habilitados para el Annio -----\n";
     string informe = acad->informePeriodos(); 
     if (informe.empty()) { 
         cout << "No hay periodos registrados en el sistema.\n";
@@ -671,10 +685,10 @@ void interfaz::mostrarInformeGrupoEspecifico() {
     cout << "Ingrese el número de grupo: ";
     cin >> numGrupo; 
    
-    cout << "----- Informe del Grupo Específico -----\n";
+    cout << "----- Informe del Grupo Especifico -----\n";
     string informe = acad->informeGrupoEspecifico(idCurso, numGrupo); 
     if (informe == "Curso no encontrado." || informe == "Grupo no encontrado.") { 
-        cout << "Error: No se encontró el curso o grupo especificado.\n";
+        cout << "Error: No se encontro el curso o grupo especificado.\n";
     }
     else {
         cout << informe << endl; 

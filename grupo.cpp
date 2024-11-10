@@ -27,7 +27,13 @@ void grupo::setEstudiantes(listaEstudiante* e) { estudiantes = e; }
 
 //Modificadores de estudiantes
 bool grupo::agregarEstudiante(estudiante* e){
-    return estudiantes->insertarPrimero(e);
+    if (estudiantes->insertarPrimero(e)) {
+        cantidadAlumnos++;
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 void grupo::eliminarEstudiante(string id) {
     estudiantes->eliminarEstudiante(id);
