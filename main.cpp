@@ -7,13 +7,20 @@
 using namespace std;
 
 int main() {
-	academia acad;
-	interfaz inter;
+    academia* acad = new academia();
+    interfaz* inter = new interfaz();
 
-	inter.menuPrincipal();
+    inter->menuPrincipal();
 
-	return 0;
+    // Guardar datos en archivos físicos antes de salir
+    acad->guardarDatos();
+
+    delete acad;
+    delete inter;
+
+    return 0;
 }
+
 
 
 

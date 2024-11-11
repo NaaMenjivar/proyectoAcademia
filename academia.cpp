@@ -13,16 +13,11 @@ academia::academia() {
 
 // Destructor
 academia::~academia() {
-    /*archivos->guardarEstudiantes(estudiantes);
+    archivos->guardarEstudiantes(estudiantes);
     archivos->guardarProfesores(profesores); 
     archivos->guardarGrupos(grupos);
     archivos->guardarCursos(cursos);
-    archivos->guardarPeriodos(periodos);*/
-    cursos->vaciar();
-    grupos->vaciar();
-    estudiantes->vaciarLista();
-    profesores->vaciarLista();
-    periodos->vaciarLista();
+    archivos->guardarPeriodos(periodos);
     delete cursos;
     delete grupos;
     delete estudiantes;

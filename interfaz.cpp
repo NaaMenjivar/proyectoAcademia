@@ -7,7 +7,7 @@ interfaz::interfaz() {
 
 //Destructor
 interfaz::~interfaz() {
-    acad->guardarDatos();
+    acad->guardarDatos(); 
     delete acad;
 }
 

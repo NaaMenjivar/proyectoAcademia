@@ -1,7 +1,7 @@
 #include "archivo.h"
 
 void archivo::guardarEstudiantes(listaEstudiante* lis) {
-	salida.open("Archivos/estudiantesAcademia.txt", ios::out);
+	salida.open("Archivos/estudiantesAcademia.txt");
 	if (salida.good()) {
 		nodoEstudiante* aux = lis->getPrimero();
 		while (aux) {
