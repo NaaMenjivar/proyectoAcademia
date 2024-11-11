@@ -349,7 +349,7 @@ string academia::informeGrupoEspecifico(string idCurso, int numGrupo) {
 
 void academia::guardarDatos() {
     if (estudiantes && estudiantes->getPrimero()) {
-        archivos->guardarEstudiantes(estudiantes);
+        archivos->guardarEstudiantes(estudiantes); 
     }
     if (profesores && profesores->getPrimero()) {
         archivos->guardarProfesores(profesores);
