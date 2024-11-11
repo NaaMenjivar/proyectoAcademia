@@ -13,11 +13,11 @@ academia::academia() {
 
 // Destructor
 academia::~academia() {
-    archivos->guardarEstudiantes(estudiantes);
+    /*archivos->guardarEstudiantes(estudiantes);
     archivos->guardarProfesores(profesores); 
     archivos->guardarGrupos(grupos);
     archivos->guardarCursos(cursos);
-    archivos->guardarPeriodos(periodos);
+    archivos->guardarPeriodos(periodos);*/
     delete cursos;
     delete grupos;
     delete estudiantes;
@@ -348,11 +348,21 @@ string academia::informeGrupoEspecifico(string idCurso, int numGrupo) {
 }
 
 void academia::guardarDatos() {
-    archivos->guardarEstudiantes(estudiantes);
-    archivos->guardarProfesores(profesores);
-    archivos->guardarGrupos(grupos);
-    archivos->guardarCursos(cursos);
-    archivos->guardarPeriodos(periodos);  
+    if (estudiantes && estudiantes->getPrimero()) {
+        archivos->guardarEstudiantes(estudiantes);
+    }
+    if (profesores && profesores->getPrimero()) {
+        archivos->guardarProfesores(profesores);
+    }
+    if (grupos && grupos->getPrimero()) {
+        archivos->guardarGrupos(grupos);
+    }
+    if (cursos && cursos->getPrimero()) {
+        archivos->guardarCursos(cursos);
+    }
+    if (periodos && periodos->getPrimero()) {
+        archivos->guardarPeriodos(periodos);
+    }
 }
 
 
