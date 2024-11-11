@@ -1,3 +1,5 @@
+#ifndef NODOCURSO_H
+#define NODOCURSO_H
 #pragma once
 #include "curso.h"
 
@@ -14,3 +16,5 @@ public:
 	void setSig(nodoCurso*);
 	string toString();
 };
+
+#endif

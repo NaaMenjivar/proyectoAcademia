@@ -1,3 +1,5 @@
+#ifndef INTERFAZ_H
+#define INTERFAZ_H
 #pragma once
 #include "academia.h"
 #include <iostream>
@@ -41,3 +43,5 @@ public:
 	void mostrarInformeGrupoEspecifico();
 
 };
+
+#endif

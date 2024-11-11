@@ -1,3 +1,5 @@
+#ifndef DESCUENTO_H
+#define DESCUENTO_H
 #pragma once
 #include <iostream>
 #include <sstream>
@@ -17,3 +19,5 @@ public:
 	void setPorcentaje(float);
 	float calcularDescuento(float, int);
 };
+
+#endif

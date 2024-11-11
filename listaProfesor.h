@@ -1,3 +1,5 @@
+#ifndef LISTAPROFESOR_H 
+#define LISTAPROFESOR_H
 #pragma once
 #include "nodoProfesor.h"
 #include "profesor.h"
@@ -26,3 +28,5 @@ public:
 	profesor* getProfesor(string);
 	string toString();
 };
+
+#endif

@@ -1,3 +1,5 @@
+#ifndef CURSO_H
+#define CURSO_H
 #pragma once
 #include <iostream>
 #include <sstream>
@@ -37,3 +39,5 @@ public:
 
 	string toString();
 };
+
+#endif

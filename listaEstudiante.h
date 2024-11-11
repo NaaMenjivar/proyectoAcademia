@@ -1,3 +1,5 @@
+#ifndef LISTAESTUDIANTE_H 
+#define LISTAESTUDIANTE_H
 #pragma once
 #include "nodoEstudiante.h"
 #include "estudiante.h"
@@ -26,3 +28,5 @@ public:
 	estudiante* getEstudiante(string);
 	string toString();
 };
+
+#endif

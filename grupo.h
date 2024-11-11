@@ -1,3 +1,5 @@
+#ifndef GRUPO_H 
+#define GRUPO_H
 #pragma once
 #include <iostream>
 #include <sstream>
@@ -39,3 +41,5 @@ public:
 
 	string toString();
 };
+
+#endif 

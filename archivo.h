@@ -1,3 +1,5 @@
+#ifndef ARCHIVO_H
+#define ARCHIVO_H
 #pragma once
 #include "listaEstudiante.h"
 #include "listaCurso.h"
@@ -39,4 +41,6 @@ public:
 	listaGrupo* recuperarGruposCurso(string);
 	listaGrupo* recuperarGruposPeriodo(int);
 	listaCurso* recuperarCursosPeriodo(int);
-}; 
+};
+
+#endif

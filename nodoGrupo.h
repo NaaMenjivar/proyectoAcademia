@@ -1,3 +1,5 @@
+#ifndef NODOGRUPO_H
+#define NODOGRUPO_H
 #pragma once
 #include "grupo.h"
 
@@ -14,3 +16,5 @@ public:
 	void setSig(nodoGrupo*);
 	string toString();
 };
+
+#endif

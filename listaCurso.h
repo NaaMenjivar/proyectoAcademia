@@ -1,3 +1,5 @@
+#ifndef LISTACURSO_H
+#define LISTACURSO_H
 #pragma once
 #include "nodoCurso.h"
 #include "curso.h"
@@ -30,3 +32,5 @@ public:
 	int cantidadNodos();
 	string toString();
 };
+
+#endif

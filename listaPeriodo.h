@@ -1,3 +1,5 @@
+#ifndef LISTAPERIODO_H
+#define LISTAPERIODO_H
 #pragma once
 #include "periodo.h"
 #include <iostream>
@@ -30,3 +32,5 @@ public:
 	nodoPeriodo* getSig(nodoPeriodo*);
 	string toString();
 };
+
+#endif

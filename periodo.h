@@ -1,3 +1,5 @@
+#ifndef PERIODO_H
+#define PERIODO_H
 #pragma once
 #include <iostream>
 #include <sstream>
@@ -45,3 +47,5 @@ public:
 
 	string toString();
 };
+
+#endif

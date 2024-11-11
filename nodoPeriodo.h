@@ -1,3 +1,5 @@
+#ifndef NODOPERIODO_H
+#define NODOPERIODO_H
 #pragma once
 #include "periodo.h"
 #include <iostream>
@@ -20,3 +22,5 @@ public:
 	void setSig(nodoPeriodo*);
 	string toString();
 };
+
+#endif

@@ -169,7 +169,6 @@
     <ClInclude Include="listaProfesor.h" />
     <ClInclude Include="nodoCurso.h" />
     <ClInclude Include="nodoEstudiante.h" />
-    <ClInclude Include="nodoFactura.h" />
     <ClInclude Include="nodoGrupo.h" />
     <ClInclude Include="nodoPeriodo.h" />
     <ClInclude Include="nodoProfesor.h" />

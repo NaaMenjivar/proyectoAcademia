@@ -1,3 +1,5 @@
+#ifndef LISTAGRUPO_H
+#define LISTAGRUPO_H
 #pragma once
 #include "nodoGrupo.h"
 #include "grupo.h"
@@ -33,3 +35,5 @@ public:
 	nodoGrupo* getSig(nodoGrupo*);
 	string toString();
 };
+
+#endif

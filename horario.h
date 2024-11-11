@@ -1,3 +1,5 @@
+#ifndef HORARIO_H
+#define HORARIO_H
 #pragma once
 #include <iostream>
 #include <sstream> 
@@ -24,3 +26,5 @@ public:
 
     string toString();
 };
+
+#endif 

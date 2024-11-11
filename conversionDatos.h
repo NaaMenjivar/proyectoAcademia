@@ -1,3 +1,5 @@
+#ifndef CONVERSIONDATOS_H
+#define CONVERSIONDATOS_H
 #pragma once
 #include "horario.h"
 #include <iostream>
@@ -20,4 +22,6 @@ public:
     //Conversión horario
     horario* conversionHorario(string s_);
 };
+
+#endif
 

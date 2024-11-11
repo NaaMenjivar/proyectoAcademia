@@ -1,3 +1,5 @@
+#ifndef NODOPROFESOR_H
+#define NODOPROFESOR__H
 #pragma once
 #include "profesor.h"
 #include <iostream>
@@ -21,3 +23,5 @@ public:
 
 	string toString();
 };
+
+#endif

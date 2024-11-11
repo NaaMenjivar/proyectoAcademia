@@ -1,3 +1,5 @@
+#ifndef ACADEMIA_H
+#define ACADEMIA_H
 #pragma once
 #include "listaCurso.h"
 #include "listaGrupo.h"
@@ -74,3 +76,5 @@ public:
     // Persistencia de datos
     void guardarDatos();  
 };
+
+#endif

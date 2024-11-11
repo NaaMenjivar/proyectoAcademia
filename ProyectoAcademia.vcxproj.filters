@@ -164,9 +164,6 @@
     <ClInclude Include="nodoEstudiante.h">
       <Filter>Archivos de encabezado\Nodos</Filter>
     </ClInclude>
-    <ClInclude Include="nodoFactura.h">
-      <Filter>Archivos de encabezado\Nodos</Filter>
-    </ClInclude>
     <ClInclude Include="nodoGrupo.h">
       <Filter>Archivos de encabezado\Nodos</Filter>
     </ClInclude>

@@ -1,3 +1,5 @@
+#ifndef NODOESTUDIANTE_H
+#define NODOESTUDIANTE_H
 #pragma once
 #include "estudiante.h"
 
@@ -18,4 +20,6 @@ public:
 
     string toString();
 };
+
+#endif
 

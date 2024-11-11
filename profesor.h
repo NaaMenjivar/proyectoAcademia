@@ -1,3 +1,5 @@
+#ifndef PROFESOR_H 
+#define PROFESOR_H
 #pragma once
 #include <iostream>
 #include <sstream>
@@ -31,3 +33,5 @@ public:
 
     string toString();
 };
+
+#endif 
